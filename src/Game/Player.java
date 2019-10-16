@@ -18,6 +18,6 @@ public class Player {
     }
 
     public void performAction2to4(int habitat){
-        
+
     }
 }
