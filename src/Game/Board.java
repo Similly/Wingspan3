@@ -4,7 +4,7 @@ public class Board {
 	private String[][] board;
 	private final String EMPTY="[ ]"; 
 	
-	//Constructor 
+	//Constructor for Board
 	public Board() {
 	board = new String[3][5];
 	
