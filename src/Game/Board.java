@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package Game;
 
 public class Board {
@@ -51,9 +51,6 @@ public class Board {
 	
 
 }
-=======
-package Game;
 
-public class Board {
-}
->>>>>>> branch 'master' of https://github.com/Similly/Wingspan.git
+
+
