@@ -1,6 +1,8 @@
 
 package Game;
 
+//this is a test
+
 public class Board {
 	private String[][] board;
 	private final String EMPTY="[ ]"; 
