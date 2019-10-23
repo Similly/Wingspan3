@@ -1,7 +1,6 @@
 
 package Game;
 
-//this is a test
 
 public class Board {
 	private String[][] board;
