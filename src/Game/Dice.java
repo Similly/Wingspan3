@@ -10,7 +10,7 @@ public class Dice {
 	}
 	//random number generator between 1-6 for roll
 	//returns int roll 
-	public int Roll() {
+	public int roll() {
 		this.roll=(int)(Math.random()*6)+1;
 		return this.roll; 
 	}	

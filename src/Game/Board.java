@@ -48,9 +48,12 @@ public class Board {
 			return true;
 		return false;
 	}
-	
-	
 
+
+	public boolean isEmpty() {
+
+		return true;
+	}
 }
 
 
