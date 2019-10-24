@@ -9,7 +9,7 @@ public class Main {
     private static int amountOfPlayers;
     private static Player[] players;
     private static Dice dice;
-    private static int turn;
+    private static int turn, round;
     private static ArrayList<Bird> birdStack = new ArrayList<>();
 
     public static void main(String[] args){
@@ -18,11 +18,14 @@ public class Main {
         init();
 
         turn = 0;
-        while (true){
+        round = 0;
+        while (round < 3){
             turn(players[turn%amountOfPlayers]);
             turn++;
+            if(turn%amountOfPlayers == 0)
+            	round++;
         }
-    	
+    	printScores();
     }
 
     private static void turn(Player player) {
@@ -84,8 +87,18 @@ public class Main {
         Random r = new Random();
         int i = r.nextInt(birdStack.size());
         Bird bird = birdStack.get(i);
-        birdStack.remove(i);
 
         return bird;
+    }
+    
+    // prints the scores of all the players and says who the winner is
+    private static void printScores()
+    {
+    	int i = 1;
+    	for(Player p : players)
+    	{
+    		System.out.println("player " + i + " score is " + p.getScore());
+    		i++;
+    	}
     }
 }

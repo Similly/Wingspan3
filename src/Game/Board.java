@@ -60,6 +60,19 @@ public class Board {
 		}
 		return true;
 	}
+	// returns the number of birds currently on the board
+	public int numBirdsOnBoard()
+	{
+		int numBirds = 0;
+		for (int row = 0; row < 3; row++){
+			for (int col = 0; col < 5; col++){
+				if (board[row][col].equals("[X]")){
+					numBirds++;
+				}
+			}
+		}
+		return numBirds;
+	}
 }
 
 
