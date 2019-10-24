@@ -1,7 +1,7 @@
 # Wingspan
 
 
-## October 15th submission
+## October 25th submission
 
 * There is only one kind of food and eggs yet
 * Each player gets 10 food tokens, 10 eggs and 3 bird cards
