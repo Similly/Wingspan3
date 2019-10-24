@@ -1,14 +1,18 @@
 package Game;
 
 public class Bird {
+    private int id;
+    private String name;
     private int habitat;
     private int requiredFood;
     private int eggsOnBird;
 
-    public Bird(int habitat, int requiredFood, int eggsOnBird){
+    public Bird(int habitat, int requiredFood, int eggsOnBird, int id, String name){
         this.habitat = habitat;
         this.requiredFood = requiredFood;
         this.eggsOnBird = 0;
+        this.id = id;
+        this.name = name;
     }
 
     public int getHabitat() {
@@ -33,5 +37,21 @@ public class Bird {
 
     public void setEggsOnBird(int eggsOnBird) {
         this.eggsOnBird = eggsOnBird;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

@@ -1,6 +1,7 @@
 package Game;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -9,9 +10,12 @@ public class Main {
     private static Player[] players;
     private static Dice dice;
     private static int turn;
+    private static ArrayList<Bird> birdStack = new ArrayList<>();
 
     public static void main(String[] args){
-    	
+
+        initBirds();
+        System.out.println(birdStack.size());
         init();
 
         turn = 0;
@@ -56,12 +60,34 @@ public class Main {
                 "Please enter amount of players(1-4):");
         Scanner in = new Scanner(System.in);
         amountOfPlayers = in.nextInt();
-        players = new Player[4];
+        players = new Player[amountOfPlayers];
 
         for (int i = 0 ; i < players.length ; i++) {
             players[i] = new Player(i+1);
         }
 
         dice = new Dice();
+    }
+
+    private static void initBirds(){
+        birdStack.add(new Bird(0,1,0,0,"Hawk"));
+        birdStack.add(new Bird(1,3,0,1,"Klaus"));
+        birdStack.add(new Bird(2,4,0,2,"Gunther"));
+        birdStack.add(new Bird(0,2,0,3,"Rudiger"));
+        birdStack.add(new Bird(1,1,0,4,"Maria"));
+        birdStack.add(new Bird(2,1,0,5,"Stephanie"));
+        birdStack.add(new Bird(0,4,0,6,"Mustafa"));
+        birdStack.add(new Bird(1,11,0,7,"Elke"));
+        birdStack.add(new Bird(2,14,0,8,"Hawk"));
+    }
+
+    public static Bird drawBirdFromStack(){
+        Random r = new Random();
+        System.out.println(birdStack.size());
+        int i = r.nextInt(birdStack.size());
+        Bird bird = birdStack.get(i);
+        birdStack.remove(i);
+
+        return bird;
     }
 }

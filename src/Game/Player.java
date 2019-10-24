@@ -1,6 +1,7 @@
 package Game;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
 
@@ -9,29 +10,49 @@ public class Player {
     private int eggCount;
     private ArrayList<Bird> birds;
     private Board board;
+    private Dice dice;
 
     public Player(int id){
         this.id = id;
         this.foodCount = 10;
         this.eggCount = 10;
         birds = new ArrayList<>();
+        for (int i = 0; i < 3; i++){
+            birds.add(Main.drawBirdFromStack());
+            System.out.println(i);
+        }
         this.board = new Board();
     }
 
     public void playABird(){
+        System.out.println("Available birds:");
+        for (int i = 0; i < birds.size(); i++){
+            System.out.println(i+1 + ": " + birds.get(i).getName());
+        }
+        System.out.println("Enter number of the bird you want to play!");
+        Scanner in = new Scanner(System.in);
 
+        int birdToPlay = in.nextInt() - 1;
+        int habitat = birds.get(birdToPlay).getHabitat();
+        for (int i = 0; i < 5; i++){
+            if (this.board.spacefree(habitat, i)){
+                this.board.placeCard(habitat, i);
+                birds.remove(birdToPlay);
+                break;
+            }
+        }
     }
 
     public void gainFood(){
-
+        // not implemented yet
     }
 
     public void layEggs(){
-
+        // not implemented yet
     }
 
     public void drawBird(){
-
+        birds.add(Main.drawBirdFromStack());
     }
 
     public ArrayList<String> getAvailableMoves(){
