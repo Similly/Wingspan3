@@ -19,32 +19,38 @@ public class Player {
         birds = new ArrayList<>();
         for (int i = 0; i < 3; i++){
             birds.add(Main.drawBirdFromStack());
-            System.out.println(i);
         }
         this.board = new Board();
+        this.dice = new Dice();
     }
 
     public void playABird(){
         System.out.println("Available birds:");
         for (int i = 0; i < birds.size(); i++){
-            System.out.println(i+1 + ": " + birds.get(i).getName());
+            if (foodCount >= birds.get(i).getRequiredFood()){
+                System.out.println(i+1 + ": " + birds.get(i).getName());
+            }
         }
         System.out.println("Enter number of the bird you want to play!");
         Scanner in = new Scanner(System.in);
 
-        int birdToPlay = in.nextInt() - 1;
-        int habitat = birds.get(birdToPlay).getHabitat();
+        int number = in.nextInt() - 1;
+        Bird bird = birds.get(number);
+        int habitat = bird.getHabitat();
         for (int i = 0; i < 5; i++){
             if (this.board.spacefree(habitat, i)){
                 this.board.placeCard(habitat, i);
-                birds.remove(birdToPlay);
+                birds.remove(bird);
                 break;
             }
         }
     }
 
     public void gainFood(){
-        // not implemented yet
+        int gainedFood = dice.roll();
+        this.foodCount += gainedFood;
+
+        System.out.println("You rolled a " + gainedFood + "! Your new food count is " + this.foodCount + "!");
     }
 
     public void layEggs(){

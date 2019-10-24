@@ -15,7 +15,6 @@ public class Main {
     public static void main(String[] args){
 
         initBirds();
-        System.out.println(birdStack.size());
         init();
 
         turn = 0;
@@ -83,7 +82,6 @@ public class Main {
 
     public static Bird drawBirdFromStack(){
         Random r = new Random();
-        System.out.println(birdStack.size());
         int i = r.nextInt(birdStack.size());
         Bird bird = birdStack.get(i);
         birdStack.remove(i);
