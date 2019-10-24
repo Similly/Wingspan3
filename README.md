@@ -1,4 +1,5 @@
 # Wingspan
+by Brian Deitchman, Madison Schiller and Simon Wand
 
 
 ## October 25th submission
