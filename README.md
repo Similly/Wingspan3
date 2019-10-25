@@ -11,3 +11,4 @@ by Brian Deitchman, Madison Schiller and Simon Wand
 * The playBird() function gives the player the option to choose one of his birds and play it on the birds habitat
 * The gainFood() function adds a random amount of food tokens between one and six to the players total amont of food tokens
 * The drawBird() function draws a random Bird card from the stack of bird cards and adds it to the players birds cards
+* The game is 3 rounds. After the 3 rounds the score is displayed
