@@ -71,7 +71,7 @@ public class Main {
         dice = new Dice();
     }
 
-    private static void initBirds(){
+    public static void initBirds(){
         birdStack.add(new Bird(0,1,0,0,"Hawk"));
         birdStack.add(new Bird(1,3,0,1,"Klaus"));
         birdStack.add(new Bird(2,4,0,2,"Gunther"));
