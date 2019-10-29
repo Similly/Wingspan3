@@ -26,9 +26,17 @@ public class Player {
 
     public void playABird(){
         System.out.println("Available birds:");
-        for (int i = 0; i < birds.size(); i++){
+        for (int i = 0; i < birds.size(); i++){ // displays all playable birds
             if (foodCount >= birds.get(i).getRequiredFood()){
-                System.out.println(i+1 + ": " + birds.get(i).getName());
+            	String hab;
+            	if(birds.get(i).getHabitat() == 0)
+            		hab = "Forest";
+            	else if(birds.get(i).getHabitat() == 1)
+            		hab = "Grasslands";
+            	else
+            		hab = "Wetlands";
+                System.out.println(i+1 + ": " + birds.get(i).getName() + ". Food cost " + birds.get(i).getRequiredFood()
+                		+ ". lives in " + hab);
             }
         }
         System.out.println("Enter number of the bird you want to play!");
@@ -40,6 +48,7 @@ public class Player {
         for (int i = 0; i < 5; i++){
             if (this.board.spacefree(habitat, i)){
                 this.board.placeCard(habitat, i);
+                foodCount -= bird.getRequiredFood();  
                 birds.remove(bird);
                 break;
             }
@@ -52,9 +61,12 @@ public class Player {
 
         System.out.println("You rolled a " + gainedFood + "! Your new food count is " + this.foodCount + "!");
     }
-
+    // lays eggs based on how many birds are in the middle habitat
     public void layEggs(){
-        // not implemented yet
+    	int newEggs = 1;
+    	newEggs += board.birdsInGrasslands();
+    	eggCount += newEggs;
+    	System.out.println("Your egg count has increased by " + newEggs  + "! Your new egg count is " +eggCount + "!");
     }
 
     public void drawBird(){
@@ -73,9 +85,9 @@ public class Player {
 
         availableMoves.add("2: gain food");
 
-        if (!board.isEmpty() && eggCount > 0){
-            availableMoves.add("3: lay eggs");
-        }
+      
+        availableMoves.add("3: lay eggs");
+      
 
         availableMoves.add("4: draw bird card");
         return availableMoves;
