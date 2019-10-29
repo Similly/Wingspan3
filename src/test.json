@@ -1,0 +1,10 @@
+{
+  "classes": [
+      {"name": "BoardTest"},
+      {"name": "DiceTest"},
+      {"name": "EggTest"},
+      {"name": "FoodTokenTest"},
+      {"name": "MainTest"},
+      {"name": "PlayerTest"}
+  ]
+}

@@ -4,3 +4,15 @@
 /bin/
 /.classpath
 /.project
+/src/Test/DiceTest.class
+/src/Test/EggTest.class
+/src/Test/FoodTokenTest.class
+/src/Test/MainTest.class
+/src/Test/BoardTest.class
+/src/Test/PlayerTest.class
+/src/Game/Bird.class
+/src/Game/Board.class
+/src/Game/Dice.class
+/src/Game/Main.class
+/src/Game/Player.class
+/out/

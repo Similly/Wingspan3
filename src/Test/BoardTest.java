@@ -3,9 +3,9 @@ package Test;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-class BoardTest {
+public class BoardTest {
 
     @Before
     public void setUp() {
@@ -13,6 +13,7 @@ class BoardTest {
 
     @Test
     public void display() {
+
     }
 
     @Test
@@ -20,7 +21,7 @@ class BoardTest {
     }
 
     @Test
-    public void spacefree() {
+    public void spaceFree() {
     }
 
     @Test
