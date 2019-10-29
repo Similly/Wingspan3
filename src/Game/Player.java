@@ -40,6 +40,7 @@ public class Player {
         for (int i = 0; i < 5; i++){
             if (this.board.spacefree(habitat, i)){
                 this.board.placeCard(habitat, i);
+                foodCount -= bird.getRequiredFood();
                 birds.remove(bird);
                 break;
             }
