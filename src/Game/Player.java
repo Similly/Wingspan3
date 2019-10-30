@@ -39,7 +39,7 @@ public class Player {
         int habitat = bird.getHabitat();
         for (int i = 0; i < 5; i++){
             if (this.board.spacefree(habitat, i)){
-                this.board.placeCard(habitat, i);
+                this.board.placeCard(habitat, i,bird);
                 birds.remove(bird);
                 break;
             }

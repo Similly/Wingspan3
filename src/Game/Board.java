@@ -3,19 +3,19 @@ package Game;
 
 
 public class Board {
-	private String[][] board;
-	private final String EMPTY="[ ]"; 
+	private Bird[][] board;
+	private Bird bird=new Bird();
 	
 	//Constructor for Board
 	public Board() {
-	board = new String[3][5];
+	board = new Bird[3][5];
 	
 	//initialize board 
 	for(int row=0;row<3;row++)
 	{
 		for(int col=0;col<5;col++)
 		{
-			board[row][col]=EMPTY; 
+			board[row][col]=bird; 
 		}
 	}
 	}
@@ -27,7 +27,8 @@ public class Board {
 		{
 			for(int col=0;col<5;col++)
 			{
-				System.out.print(board[row][col]); 
+				
+				System.out.printf("|"+String.format("%8s", board[row][col].getName()));
 			}
 			System.out.println();
 		}
@@ -35,16 +36,16 @@ public class Board {
     }
 	
 	//place a card on the board in specified row and col 
-	public void placeCard(int row, int col)
+	public void placeCard(int row, int col, Bird b)
 	{
-		board[row][col]="[X]";
+		board[row][col]=b;
 	}
 	
 	//input:the row and col player would like to check if space is occupied
 	//output: true if not occupied
 	public boolean spacefree(int row, int col) {
 		
-		if(board[row][col]=="[ ]")
+		if(board[row][col].getId()==0)
 			return true;
 		return false;
 	}
@@ -53,7 +54,7 @@ public class Board {
 	public boolean isEmpty() {
 		for (int row = 0; row < 3; row++){
 			for (int col = 0; col < 5; col++){
-				if (board[row][col].equals("[X]")){
+				if (board[row][col].getId()!=0){
 					return false;
 				}
 			}
@@ -66,7 +67,7 @@ public class Board {
 		int numBirds = 0;
 		for (int row = 0; row < 3; row++){
 			for (int col = 0; col < 5; col++){
-				if (board[row][col].equals("[X]")){
+				if (board[row][col].getId()!=0){
 					numBirds++;
 				}
 			}

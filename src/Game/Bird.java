@@ -6,6 +6,12 @@ public class Bird {
     private int habitat;
     private int requiredFood;
     private int eggsOnBird;
+    
+    public Bird()
+    {
+    	id=0;
+    	name="";
+    }
 
     public Bird(int habitat, int requiredFood, int eggsOnBird, int id, String name){
         this.habitat = habitat;
