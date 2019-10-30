@@ -4,7 +4,7 @@ import subprocess as sub
 with open('test.json') as json_file:
     data = json.load(json_file)
     for c in data["classes"]:
-        print(c["name"] + "is compiling..")
+        print(c["name"] + " is compiling..")
         sub.call('javac -cp junit-4.13-rc-1.jar;. Test/' + c["name"] + '.java', shell=True)
     for c in data["classes"]:
         print("\n\n\n++++++++++++++++++++++++++++++++")
