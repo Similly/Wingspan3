@@ -83,6 +83,17 @@ public class Board {
 		}
 		return numBirds;
 	}
+
+	public int birdsInForrest()
+	{
+		int numBirds = 0;
+		for(int i =0 ; i < 5; i++)
+		{
+			if(board[0][i].equals("[X]"))
+				numBirds++;
+		}
+		return numBirds;
+	}
 }
 
 

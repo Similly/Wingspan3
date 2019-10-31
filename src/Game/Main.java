@@ -136,9 +136,6 @@ public class Main {
         birdStack.add(new Bird(0,2,0,51,"Bushtit"));
         birdStack.add(new Bird(0,1,0,52,"California Condor"));
         birdStack.add(new Bird(0,3,0,53,"California Quail"));
-
-
-
     }
 
     public static Bird drawBirdFromStack(){

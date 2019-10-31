@@ -58,10 +58,11 @@ public class Player {
     }
 
     public void gainFood(){
-        int gainedFood = dice.roll();
+        int gainedFood = 1;
+        gainedFood += board.birdsInForrest();
         this.foodCount += gainedFood;
 
-        System.out.println("You rolled a " + gainedFood + "! Your new food count is " + this.foodCount + "!");
+        System.out.println("You have " + board.birdsInForrest() + " birds in your forrest section, so your food count has increased by " + gainedFood + "! Your new food count is " + this.foodCount + "!");
     }
     // lays eggs based on how many birds are in the middle habitat
     public void layEggs(){
