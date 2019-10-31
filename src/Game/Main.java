@@ -81,6 +81,54 @@ public class Main {
         birdStack.add(new Bird(0,4,0,6,"Mustafa"));
         birdStack.add(new Bird(1,11,0,7,"Elke"));
         birdStack.add(new Bird(2,14,0,8,"Hawk"));
+        birdStack.add(new Bird(0,3,0,9,"Acorn Woodpecker"));
+        birdStack.add(new Bird(2,3,0,10,"American Avocet"));
+        birdStack.add(new Bird(2,3,0,11,"American Bittern"));
+        birdStack.add(new Bird(2,2,0,12,"American Coot"));
+        birdStack.add(new Bird(1,1,0,13,"American Crow"));
+        birdStack.add(new Bird(1,2,0,14,"American Goldfinch"));
+        birdStack.add(new Bird(1,2,0,15,"American Kestrel"));
+        birdStack.add(new Bird(2,2,0,16,"American Oystercatcher"));
+        birdStack.add(new Bird(0,1,0,17,"American Robin"));
+        birdStack.add(new Bird(2,2,0,18,"American White Pelican"));
+        birdStack.add(new Bird(0,3,0,19,"American Woodcock"));
+        birdStack.add(new Bird(2,2,0,20,"Anhinga"));
+        birdStack.add(new Bird(1,1,0,21,"Anna's Hummingbird"));
+        birdStack.add(new Bird(2,3,0,22,"Ash-Throated Flycather"));
+        birdStack.add(new Bird(2,3,0,23,"Atlantic Puffin"));
+        birdStack.add(new Bird(1,2,0,24,"Baird's Sparrow"));
+        birdStack.add(new Bird(3,2,0,25,"Bald Eagle"));
+        birdStack.add(new Bird(0,3,0,26,"Baltimore Oriole"));
+        birdStack.add(new Bird(0,2,0,27,"Barn Owl"));
+        birdStack.add(new Bird(1,1,0,28,"Barn Swallow"));
+        birdStack.add(new Bird(0,1,0,29,"Barred Owl"));
+        birdStack.add(new Bird(2,3,0,30,"Barrow's Goldeneye"));
+        birdStack.add(new Bird(0,2,0,31,"Bell's Vireo"));
+        birdStack.add(new Bird(2,2,0,32,"Belted Kingfisher"));
+        birdStack.add(new Bird(0,3,0,33,"Bewick's Wren"));
+        birdStack.add(new Bird(2,2,0,34,"Black Skimmer"));
+        birdStack.add(new Bird(2,2,0,35,"Black Tern"));
+        birdStack.add(new Bird(0,1,0,36,"Black Vulture"));
+        birdStack.add(new Bird(2,2,0,37,"Black-Bellied Whistling-Duck"));
+        birdStack.add(new Bird(1,2,0,38,"Black-billed Maggie"));
+        birdStack.add(new Bird(2,3,0,39,"Black-Crowned Night Heron"));
+        birdStack.add(new Bird(2,2,0,40,"Black-necked Stilt"));
+        birdStack.add(new Bird(1,3,0,41,"Blue Grosbeak"));
+        birdStack.add(new Bird(0,2,0,42,"Blue Jay"));
+        birdStack.add(new Bird(0,1,0,43,"Blue-Gray Gnatcatcher"));
+        birdStack.add(new Bird(1,2,0,44,"Blue-Winged Warbler"));
+        birdStack.add(new Bird(1,3,0,45,"Bobolink"));
+        birdStack.add(new Bird(1,2,0,46,"Brewer's Blackbird"));
+        birdStack.add(new Bird(1,2,0,47,"Bronzed Cowbird"));
+        birdStack.add(new Bird(2,2,0,48,"Brown Pelican"));
+        birdStack.add(new Bird(1,1,0,49,"Brown-headed Cowbird"));
+        birdStack.add(new Bird(1,2,0,50,"Burrowing Owl"));
+        birdStack.add(new Bird(0,2,0,51,"Bushtit"));
+        birdStack.add(new Bird(0,1,0,52,"California Condor"));
+        birdStack.add(new Bird(0,3,0,53,"California Quail"));
+
+
+
     }
 
     public static Bird drawBirdFromStack(){
