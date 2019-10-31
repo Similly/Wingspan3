@@ -8,14 +8,16 @@ public class Player {
     private int id;
     private int foodCount;
     private int eggCount;
+    private int actionCubes;
     private ArrayList<Bird> birds;
     private Board board;
     private Dice dice;
 
     public Player(int id){
         this.id = id;
-        this.foodCount = 10;
-        this.eggCount = 10;
+        this.foodCount = 5;
+        this.eggCount = 0;
+        this.actionCubes = 8;
         birds = new ArrayList<>();
         for (int i = 0; i < 3; i++){
             birds.add(Main.drawBirdFromStack());
@@ -137,4 +139,8 @@ public class Player {
     public void setBoard(Board board) {
         this.board = board;
     }
+
+    public int getActionCubes() { return actionCubes; }
+
+    public void setActionCubes(int actionCubes) { this.actionCubes = actionCubes; }
 }

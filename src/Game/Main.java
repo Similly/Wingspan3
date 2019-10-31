@@ -29,32 +29,42 @@ public class Main {
     }
 
     private static void turn(Player player) {
-        ArrayList<String> availableMoves = player.getAvailableMoves();
-        System.out.println("It's the turn of Player " + player.getId());
-        player.getBoard().display();
-        System.out.println("Your available moves are:\n");
-        for (int i = 0; i < availableMoves.size(); i++){
-            System.out.println(availableMoves.get(i));
-        }
-        System.out.println("\nChoose one of the available moves by typing its number!");
-        Scanner in = new Scanner(System.in);
-        int moveNumber = in.nextInt();
+        player.setActionCubes(8);
+        while (player.getActionCubes() > 0){
+            ArrayList<String> availableMoves = player.getAvailableMoves();
+            System.out.println("It's the turn of Player " + player.getId());
+            player.getBoard().display();
+            System.out.println("You have " + player.getActionCubes() + " Action Cubes left!");
+            System.out.println("Your available moves are:\n");
+            for (int j = 0; j < availableMoves.size(); j++){
+                System.out.println(availableMoves.get(j));
+            }
+            System.out.println("5: End turn");
+            System.out.println("\nChoose one of the available moves by typing its number!");
+            Scanner in = new Scanner(System.in);
+            int moveNumber = in.nextInt();
 
-        switch (moveNumber){
-            case 1:
-                player.playABird();
-                break;
-            case 2:
-                player.gainFood();
-                break;
-            case 3:
-                player.layEggs();
-                break;
-            case 4:
-                player.drawBird();
-                break;
+            switch (moveNumber){
+                case 1:
+                    player.playABird();
+                    break;
+                case 2:
+                    player.gainFood();
+                    break;
+                case 3:
+                    player.layEggs();
+                    break;
+                case 4:
+                    player.drawBird();
+                    break;
+                case 5:
+                    player.setActionCubes(8);
+                    player.getBoard().display();
+                    return;
+            }
+            player.getBoard().display();
+            player.setActionCubes(player.getActionCubes()-1);
         }
-        player.getBoard().display();
     }
 
     private static void init(){
@@ -134,9 +144,8 @@ public class Main {
     public static Bird drawBirdFromStack(){
         Random r = new Random();
         int i = r.nextInt(birdStack.size());
-        Bird bird = birdStack.get(i);
 
-        return bird;
+        return birdStack.get(i);
     }
     
     // prints the scores of all the players and says who the winner is
