@@ -15,6 +15,7 @@ by Brian Deitchman, Madison Schiller and Simon Wand
 
 ## October 30th submission game functionality
 
+* The game has 54 birds implemented.
 * At first the game asks for the amount of players (1-4)
 * The game is 3 rounds so each player has 3 turns
 * A player has 8 action cubes during his turn, so he can make up to 8 moves
