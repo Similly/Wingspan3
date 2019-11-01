@@ -28,6 +28,7 @@ public class Main {
     	printScores();
     }
 
+    // checks the available actioncubes for a player and tells the player what options he can choose from to make a move
     private static void turn(Player player) {
         player.setActionCubes(8);
         while (player.getActionCubes() > 0){
@@ -67,6 +68,7 @@ public class Main {
         }
     }
 
+    // initializes the game for the given amount of player
     private static void init(){
         System.out.println("+++ Welcome to Wingspan! +++\n" +
                 "Please enter amount of players(1-4):");
@@ -81,6 +83,7 @@ public class Main {
         dice = new Dice();
     }
 
+    // adds the birds to the birdstack
     public static void initBirds(){
         birdStack.add(new Bird(0,1,0,0,"Hawk"));
         birdStack.add(new Bird(1,3,0,1,"Klaus"));
@@ -138,6 +141,7 @@ public class Main {
         birdStack.add(new Bird(0,3,0,53,"California Quail"));
     }
 
+    // return a random bird card add removes it from the bird card stack
     public static Bird drawBirdFromStack(){
         Random r = new Random();
         int i = r.nextInt(birdStack.size());

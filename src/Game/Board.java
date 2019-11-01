@@ -73,6 +73,8 @@ public class Board {
 		}
 		return numBirds;
 	}
+
+	// returns the number of birds currently on the grasslands section of the board
 	public int birdsInGrasslands()
 	{
 		int numBirds = 0;
@@ -84,6 +86,7 @@ public class Board {
 		return numBirds;
 	}
 
+	// returns the number of birds currently on the forrest section of the board
 	public int birdsInForrest()
 	{
 		int numBirds = 0;

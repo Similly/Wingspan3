@@ -26,6 +26,7 @@ public class Player {
         this.dice = new Dice();
     }
 
+    // The player chooses a bird and plays it on his board
     public void playABird(){
         System.out.println("Available birds:");
         for (int i = 0; i < birds.size(); i++){ // displays all playable birds
@@ -57,6 +58,7 @@ public class Player {
         }
     }
 
+    // gets food based on how many birds are in the first habitat
     public void gainFood(){
         int gainedFood = 1;
         gainedFood += board.birdsInForrest();
@@ -72,10 +74,12 @@ public class Player {
     	System.out.println("Your egg count has increased by " + newEggs  + "! Your new egg count is " +eggCount + "!");
     }
 
+    // add a bird to the players bird arraylist
     public void drawBird(){
         birds.add(Main.drawBirdFromStack());
     }
 
+    // returns the moves a player can make
     public ArrayList<String> getAvailableMoves(){
 
         ArrayList<String> availableMoves = new ArrayList<>();
