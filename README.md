@@ -13,6 +13,21 @@ by Brian Deitchman, Madison Schiller and Simon Wand
 * The drawBird() function draws a random Bird card from the stack of bird cards and adds it to the players birds cards
 * The game is 3 rounds. After the 3 rounds the score is displayed
 
+## October 30th submission game functionality
+
+* The game has 54 birds implemented.
+* At first the game asks for the amount of players (1-4)
+* The game is 3 rounds so each player has 3 turns
+* A player has 8 action cubes during his turn, so he can make up to 8 moves
+* The player has 5 moves to choose from
+* The first move is play a bird. The player chooses a bird from its hand, pays its foodcost and then puts it in the birds habitat.
+* The second move is gain food. The player gains food dependent on the amount of birds he has in its forrest section.
+* The third move is lay eggs. The player increases his eggCount dependent on the amount of birds he has on its grassland section.
+* The fourth move is draw a bird card. The player gets a random bird from the birdstack.
+* The fifth move is to end the tunr. If the player has some action cubes left but doesn't want to make any more moves he can end his turn.
+* The players board gets printed after each move.
+* At the end of the game the score of each player gets printed.
+
 ## Testing tool description
 
 * The testing tool is written in python
