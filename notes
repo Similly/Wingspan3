@@ -8,6 +8,21 @@
     * add method to get user input
 
 - update board class
-  * fields array to contain BIrds nnot Strings
+  * fields array to contain BIrds nnot Strings -- done
+  * add birdsOnWetlands function
+  
   
 - update bird class
+ * max eggcount
+ * different habitats (enum)
+ * different foodtypes (enum)
+ * score
+ * (special power)
+ 
+ - update player class
+  * update drawBirdCard function
+ 
+- test cases
+ 
+- bonus cards
+ 
