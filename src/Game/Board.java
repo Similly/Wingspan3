@@ -81,7 +81,7 @@ public class Board {
 		int numBirds = 0;
 		for(int i =0 ; i < 5; i++)
 		{
-			if(board[1][i].equals("[X]"))
+			if(!board[1][i].getName().equals(""))
 				numBirds++;
 		}
 		return numBirds;
@@ -93,7 +93,7 @@ public class Board {
 		int numBirds = 0;
 		for(int i =0 ; i < 5; i++)
 		{
-			if(board[0][i].equals("[X]"))
+			if(!board[0][i].getName().equals(""))
 				numBirds++;
 		}
 		return numBirds;
