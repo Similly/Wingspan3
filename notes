@@ -1,0 +1,13 @@
+- implement model view
+  * seperate packages for the model and the view
+  --> rename game package to model
+    * move main class out of the package and use it as the conroller
+    * remove all print or scanner statements and replace it with function calls from the view
+  --> create view package with view class
+    * implement methods for all things that need to be printed
+    * add method to get user input
+
+- update board class
+  * fields array to contain BIrds nnot Strings
+  
+- update bird class
