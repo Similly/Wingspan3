@@ -50,12 +50,12 @@ public class Player {
         int habitat = bird.getHabitat();
         for (int i = 0; i < 5; i++){
             if (this.board.spacefree(habitat, i)){
-<<<<<<< HEAD
+
                 this.board.placeCard(habitat, i,bird);
-=======
-                this.board.placeCard(habitat, i);
+
+                
                 foodCount -= bird.getRequiredFood();
->>>>>>> branch 'master' of https://github.com/Similly/Wingspan.git
+
                 birds.remove(bird);
                 break;
             }
