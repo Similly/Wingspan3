@@ -2,7 +2,7 @@ package Game;
 
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
+import view.MainView;
 
 public class Main {
 
@@ -33,17 +33,12 @@ public class Main {
         player.setActionCubes(8);
         while (player.getActionCubes() > 0){
             ArrayList<String> availableMoves = player.getAvailableMoves();
-            System.out.println("It's the turn of Player " + player.getId());
+            MainView.playerTurn(player.getId());
             player.getBoard().display();
-            System.out.println("You have " + player.getActionCubes() + " Action Cubes left!");
-            System.out.println("Your available moves are:\n");
-            for (int j = 0; j < availableMoves.size(); j++){
-                System.out.println(availableMoves.get(j));
-            }
-            System.out.println("5: End turn");
-            System.out.println("\nChoose one of the available moves by typing its number!");
-            Scanner in = new Scanner(System.in);
-            int moveNumber = in.nextInt();
+            MainView.actionCubes(player.getActionCubes());
+            MainView.availableMoves(availableMoves);
+            int moveNumber;
+            moveNumber = MainView.getInt();
 
             switch (moveNumber){
                 case 1:
@@ -70,10 +65,8 @@ public class Main {
 
     // initializes the game for the given amount of player
     private static void init(){
-        System.out.println("+++ Welcome to Wingspan! +++\n" +
-                "Please enter amount of players(1-4):");
-        Scanner in = new Scanner(System.in);
-        amountOfPlayers = in.nextInt();
+    	MainView.welcomeMessage();
+    	amountOfPlayers = MainView.getInt();
         players = new Player[amountOfPlayers];
 
         for (int i = 0 ; i < players.length ; i++) {
