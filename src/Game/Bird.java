@@ -14,8 +14,8 @@ public class Bird {
     public Bird()
     {
     	id=0;
-    	name="-";//11/8/19
-    }
+    	name="-";
+    	}
 
     public Bird(int habitat, int requiredFood, int eggsOnBird, int id, String name){
         this.habitat = habitat;
