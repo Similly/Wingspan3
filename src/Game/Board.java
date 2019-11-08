@@ -27,9 +27,13 @@ public class Board {
 		{
 			for(int col=0;col<5;col++)
 			{
+				//System.out.println("hi");
+				String name=board[row][col].getName();
+				System.out.printf("%1.1s %12.12s", "|", name);
 				
-				System.out.printf("|"+String.format("%8s", board[row][col].getName()));
+				//System.out.printf("'%15.15s'  '%15.15s'   '%15.15s'","|",name,"|");
 			}
+			System.out.print("|");
 			System.out.println();
 		}
 		System.out.println();
@@ -81,7 +85,7 @@ public class Board {
 		int numBirds = 0;
 		for(int i =0 ; i < 5; i++)
 		{
-			if(!board[1][i].getName().equals(""))
+			if(!board[1][i].getName().equals("-"))
 				numBirds++;
 		}
 		return numBirds;
@@ -93,11 +97,22 @@ public class Board {
 		int numBirds = 0;
 		for(int i =0 ; i < 5; i++)
 		{
-			if(!board[0][i].getName().equals(""))
+			if(!board[0][i].getName().equals("-"))
 				numBirds++;
 		}
 		return numBirds;
 	}
+	// returns the number of birds currently on the forrest section of the board
+		public int birdsInWetLands()
+		{
+			int numBirds = 0;
+			for(int i =0 ; i < 5; i++)
+			{
+				if(!board[2][i].getName().equals("-"))
+					numBirds++;
+			}
+			return numBirds;
+		}
 }
 
 

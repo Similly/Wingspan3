@@ -13,6 +13,13 @@ public class Main {
     private static ArrayList<Bird> birdStack = new ArrayList<>();
 
     public static void main(String[] args){
+    	
+    	//System.out.println("hi");
+    	
+    	//Board board=new Board();
+    	
+    	//board.display();
+    	
 
         initBirds();
         init();
