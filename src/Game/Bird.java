@@ -14,7 +14,7 @@ public class Bird {
     public Bird()
     {
     	id=0;
-    	name="-";
+    	name="-";//11/8/19
     }
 
     public Bird(int habitat, int requiredFood, int eggsOnBird, int id, String name){
