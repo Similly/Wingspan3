@@ -1,5 +1,7 @@
 package Game;
 
+import view.BoardView;
+
 
 public class Board {
 	private Bird[][] board;
@@ -21,16 +23,17 @@ public class Board {
 	
 	//print out the board 
 	public void display () {
-
+		
+		//BoardView.displayBoard(this);
+		
+		
 		for(int row=0;row<3;row++)
 		{
 			for(int col=0;col<5;col++)
 			{
-				//System.out.println("hi");
 				String name=board[row][col].getName();
 				System.out.printf("%1.1s %12.12s", "|", name);
 				
-				//System.out.printf("'%15.15s'  '%15.15s'   '%15.15s'","|",name,"|");
 			}
 			System.out.print("|");
 			System.out.println();
