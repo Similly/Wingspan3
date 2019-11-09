@@ -1,5 +1,5 @@
 # Wingspan
-by Brian Deitchman, Madison Schiller and Simon Wand
+by Brian Deitchman(briandeutchman1), Madison Schiller(madischiller) and Simon Wand(Similly)
 
 
 ## October 25th submission
@@ -27,6 +27,11 @@ by Brian Deitchman, Madison Schiller and Simon Wand
 * The fifth move is to end the tunr. If the player has some action cubes left but doesn't want to make any more moves he can end his turn.
 * The players board gets printed after each move.
 * At the end of the game the score of each player gets printed.
+
+## November 8th submission
+
+* implemented the model-view-controller-pattern
+* moved all the view elements from the model to a new view directory
 
 ## Testing tool description
 
