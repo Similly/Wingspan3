@@ -1,4 +1,4 @@
-package Game;
+package Model;
 
 
 /* A bird has 5 fields.

@@ -1,7 +1,7 @@
 package Test;
 
-import Game.Main;
-import Game.Player;
+import Controller.Main;
+import Model.Player;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

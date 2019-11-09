@@ -1,9 +1,9 @@
-- implement model view
-  * seperate packages for the model and the view
+- implement model View
+  * seperate packages for the model and the View
   --> rename game package to model
     * move main class out of the package and use it as the conroller
-    * remove all print or scanner statements and replace it with function calls from the view
-  --> create view package with view class
+    * remove all print or scanner statements and replace it with function calls from the View
+  --> create View package with View class
     * implement methods for all things that need to be printed
     * add method to get user input
 

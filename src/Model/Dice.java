@@ -1,4 +1,4 @@
-package Game;
+package Model;
 
 //Dice class to produce a roll of dice for game 
 public class Dice {

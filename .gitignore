@@ -10,9 +10,11 @@
 /src/Test/MainTest.class
 /src/Test/BoardTest.class
 /src/Test/PlayerTest.class
-/src/Game/Bird.class
-/src/Game/Board.class
-/src/Game/Dice.class
-/src/Game/Main.class
-/src/Game/Player.class
+/src/Model/Bird.class
+/src/Model/Board.class
+/src/Model/Dice.class
+/src/Model/Main.class
+/src/Model/Player.class
 /out/
+/Wingspan2.iml
+/Wingspan.iml

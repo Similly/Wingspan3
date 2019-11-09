@@ -1,8 +1,13 @@
-package Game;
+package Controller;
 
 import java.util.ArrayList;
 import java.util.Random;
-import view.MainView;
+
+import Model.Bird;
+import Model.Dice;
+import Model.Player;
+import View.MainView;
+import View.PlayerView;
 
 public class Main {
 
@@ -43,13 +48,14 @@ public class Main {
 
             switch (moveNumber){
                 case 1:
-                    player.playABird();
+                    PlayerView.printAvailableBirds(player.getAvailableBirds());
+                    player.playBird(PlayerView.chooseBirdFromList(player.getAvailableBirds()));
                     break;
                 case 2:
-                    player.gainFood();
+                    PlayerView.printGainFood(player.gainFood(), player.getFoodCount());
                     break;
                 case 3:
-                    player.layEggs();
+                    PlayerView.printLayEggs(player.layEggs(), player.getEggCount());
                     break;
                 case 4:
                     player.drawBird();

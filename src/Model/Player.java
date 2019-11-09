@@ -1,4 +1,6 @@
-package Game;
+package Model;
+
+import Controller.Main;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -24,6 +26,35 @@ public class Player {
         }
         this.board = new Board();
         this.dice = new Dice();
+    }
+
+    //returns the available birds
+    public ArrayList<Bird> getAvailableBirds(){
+        ArrayList<Bird> availableBirds = new ArrayList<Bird>();
+
+        for(int i = 0; i < birds.size(); i++){
+            if (foodCount >= birds.get(i).getRequiredFood()){
+                availableBirds.add(birds.get(i));
+            }
+        }
+
+        return availableBirds;
+    }
+
+    //plays a bird to the board
+    public void playBird(Bird bird){
+        int habitat = bird.getHabitat();
+        for (int i = 0; i < 5; i++){
+            if (this.board.spacefree(habitat, i)){
+
+                this.board.placeCard(habitat, i,bird);
+
+                foodCount -= bird.getRequiredFood();
+
+                birds.remove(bird);
+                break;
+            }
+        }
     }
 
     // The player chooses a bird and plays it on his board
@@ -53,7 +84,7 @@ public class Player {
 
                 this.board.placeCard(habitat, i,bird);
 
-                
+
                 foodCount -= bird.getRequiredFood();
 
                 birds.remove(bird);
@@ -63,19 +94,22 @@ public class Player {
     }
 
     // gets food based on how many birds are in the first habitat
-    public void gainFood(){
+    public int gainFood(){
         int gainedFood = 1;
         gainedFood += board.birdsInForrest();
         this.foodCount += gainedFood;
 
-        System.out.println("You have " + board.birdsInForrest() + " birds in your forrest section, so your food count has increased by " + gainedFood + "! Your new food count is " + this.foodCount + "!");
+        return gainedFood;
+        //System.out.println("You have " + board.birdsInForrest() + " birds in your forrest section, so your food count has increased by " + gainedFood + "! Your new food count is " + this.foodCount + "!");
     }
     // lays eggs based on how many birds are in the middle habitat
-    public void layEggs(){
+    public int layEggs(){
     	int newEggs = 1;
     	newEggs += board.birdsInGrasslands();
     	eggCount += newEggs;
-    	System.out.println("Your egg count has increased by " + newEggs  + "! Your new egg count is " +eggCount + "!");
+
+    	return newEggs;
+    	//System.out.println("Your egg count has increased by " + newEggs  + "! Your new egg count is " +eggCount + "!");
     }
 
     // add a bird to the players bird arraylist

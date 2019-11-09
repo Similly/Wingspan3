@@ -1,6 +1,6 @@
-package view;
+package View;
 
-import Game.Board;
+import Model.Board;
 
 
 public class BoardView {
