@@ -33,6 +33,12 @@ by Brian Deitchman(briandeutchman1), Madison Schiller(madischiller) and Simon Wa
 * implemented the model-view-controller-pattern
 * moved all the view elements from the model to a new view directory
 
+## November 13th submission
+
+* updated bird class and added some fields(score, egglimit, food, habitats)
+* added birds.json file containing all bird cards of the game
+* implemented a new initBirds function to read the json file and create the bird objects
+
 ## Testing tool description
 
 * The testing tool is written in python
@@ -40,3 +46,12 @@ by Brian Deitchman(briandeutchman1), Madison Schiller(madischiller) and Simon Wa
 * The testing tool reads a JSON file containing the names of all the test classes of the project.
 * The testing tool compiles each test class and each associated class.
 * After that it runs every test and prints to the command line whether the test was successful or not.
+
+## installation of the JSON.simple library
+
+* To parse the JSON file we are using the JSON.simple library
+* To compile the program you have to add the library to your classpath
+* download the .jar file (http://www.java2s.com/Code/Jar/j/Downloadjsonsimple111jar.htm)
+* add the jar file to your dependencies:
+  * Eclipse: https://www.edureka.co/community/4028/how-to-import-a-jar-file-in-eclipse
+  * Intellij: https://stackoverflow.com/questions/1051640/correct-way-to-add-external-jars-lib-jar-to-an-intellij-idea-project
