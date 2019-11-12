@@ -57,42 +57,6 @@ public class Player {
         }
     }
 
-    // The player chooses a bird and plays it on his board
-    public void playABird(){
-        System.out.println("Available birds:");
-        for (int i = 0; i < birds.size(); i++){ // displays all playable birds
-            if (foodCount >= birds.get(i).getRequiredFood()){
-            	String hab;
-            	if(birds.get(i).getHabitat() == 0)
-            		hab = "Forest";
-            	else if(birds.get(i).getHabitat() == 1)
-            		hab = "Grasslands";
-            	else
-            		hab = "Wetlands";
-                System.out.println(i+1 + ": " + birds.get(i).getName() + ". Food cost " + birds.get(i).getRequiredFood()
-                		+ ". lives in " + hab);
-            }
-        }
-        System.out.println("Enter number of the bird you want to play!");
-        Scanner in = new Scanner(System.in);
-
-        int number = in.nextInt() - 1;
-        Bird bird = birds.get(number);
-        int habitat = bird.getHabitat();
-        for (int i = 0; i < 5; i++){
-            if (this.board.spacefree(habitat, i)){
-
-                this.board.placeCard(habitat, i,bird);
-
-
-                foodCount -= bird.getRequiredFood();
-
-                birds.remove(bird);
-                break;
-            }
-        }
-    }
-
     // gets food based on how many birds are in the first habitat
     public int gainFood(){
         int gainedFood = 1;

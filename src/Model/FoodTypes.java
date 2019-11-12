@@ -1,10 +1,11 @@
 package Model;
 
-enum FoodTypes {
+public enum FoodTypes {
     Wild,
     Invertebrate,
     Seed,
     Fruit,
     Fish,
-    Rodent
+    Rodent,
+    None
 }

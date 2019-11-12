@@ -2,6 +2,7 @@ package Model;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /* A bird has 5 fields.
  * An Id, a name, a habitat, the required food to play it and the amount of eggs on the bird.
@@ -15,7 +16,7 @@ public class Bird {
     private int eggsOnBird;
     private int maxEggCount;
     private int score;
-    private ArrayList<FoodTypes> foodTypes;
+    private HashMap<FoodTypes, Integer> food;
     private ArrayList<Habitats> habitats;
     
     public Bird()
@@ -24,16 +25,15 @@ public class Bird {
     	name="-";
     }
 
-    public Bird(int habitat, int requiredFood, int eggsOnBird, int id, String name, int maxEggCount, int score, ArrayList<FoodTypes> foodTypes, ArrayList<Habitats> habitats){
-        this.habitat = habitat;
-        this.requiredFood = requiredFood;
+    public Bird(int eggsOnBird, int id, String name, int maxEggCount, int score, HashMap<FoodTypes, Integer> food, ArrayList<Habitats> habitats){
+
         this.eggsOnBird = 0;
         this.maxEggCount = maxEggCount;
         this.score = score;
         this.id = id;
         this.name = name;
         this.habitats = habitats;
-        this.foodTypes = foodTypes;
+        this.food = food;
     }
 
     public int getHabitat() {
@@ -84,9 +84,9 @@ public class Bird {
 
     public void setScore(int score) { this.score = score; }
 
-    public ArrayList<FoodTypes> getFoodTypes() { return foodTypes; }
+    public HashMap<FoodTypes, Integer> getFood() { return food; }
 
-    public void setFoodTypes(ArrayList<FoodTypes> foodTypes) { this.foodTypes = foodTypes; }
+    public void setFood(HashMap<FoodTypes, Integer> food) { this.food = food; }
 
     public ArrayList<Habitats> getHabitats() { return habitats; }
 

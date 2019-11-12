@@ -1,13 +1,19 @@
 package Controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
-import Model.Bird;
-import Model.Dice;
-import Model.Player;
+import Model.*;
 import View.MainView;
 import View.PlayerView;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Main {
 
@@ -85,60 +91,74 @@ public class Main {
 
     // adds the birds to the birdstack
     public static void initBirds(){
-        birdStack.add(new Bird(0,1,0,0,"Hawk"));
-        birdStack.add(new Bird(1,3,0,1,"Klaus"));
-        birdStack.add(new Bird(2,4,0,2,"Gunther"));
-        birdStack.add(new Bird(0,2,0,3,"Rudiger"));
-        birdStack.add(new Bird(1,1,0,4,"Maria"));
-        birdStack.add(new Bird(2,1,0,5,"Stephanie"));
-        birdStack.add(new Bird(0,4,0,6,"Mustafa"));
-        birdStack.add(new Bird(1,11,0,7,"Elke"));
-        birdStack.add(new Bird(2,14,0,8,"Hawk"));
-        birdStack.add(new Bird(0,3,0,9,"Acorn Woodpecker"));
-        birdStack.add(new Bird(2,3,0,10,"American Avocet"));
-        birdStack.add(new Bird(2,3,0,11,"American Bittern"));
-        birdStack.add(new Bird(2,2,0,12,"American Coot"));
-        birdStack.add(new Bird(1,1,0,13,"American Crow"));
-        birdStack.add(new Bird(1,2,0,14,"American Goldfinch"));
-        birdStack.add(new Bird(1,2,0,15,"American Kestrel"));
-        birdStack.add(new Bird(2,2,0,16,"American Oystercatcher"));
-        birdStack.add(new Bird(0,1,0,17,"American Robin"));
-        birdStack.add(new Bird(2,2,0,18,"American White Pelican"));
-        birdStack.add(new Bird(0,3,0,19,"American Woodcock"));
-        birdStack.add(new Bird(2,2,0,20,"Anhinga"));
-        birdStack.add(new Bird(1,1,0,21,"Anna's Hummingbird"));
-        birdStack.add(new Bird(2,3,0,22,"Ash-Throated Flycather"));
-        birdStack.add(new Bird(2,3,0,23,"Atlantic Puffin"));
-        birdStack.add(new Bird(1,2,0,24,"Baird's Sparrow"));
-        birdStack.add(new Bird(3,2,0,25,"Bald Eagle"));
-        birdStack.add(new Bird(0,3,0,26,"Baltimore Oriole"));
-        birdStack.add(new Bird(0,2,0,27,"Barn Owl"));
-        birdStack.add(new Bird(1,1,0,28,"Barn Swallow"));
-        birdStack.add(new Bird(0,1,0,29,"Barred Owl"));
-        birdStack.add(new Bird(2,3,0,30,"Barrow's Goldeneye"));
-        birdStack.add(new Bird(0,2,0,31,"Bell's Vireo"));
-        birdStack.add(new Bird(2,2,0,32,"Belted Kingfisher"));
-        birdStack.add(new Bird(0,3,0,33,"Bewick's Wren"));
-        birdStack.add(new Bird(2,2,0,34,"Black Skimmer"));
-        birdStack.add(new Bird(2,2,0,35,"Black Tern"));
-        birdStack.add(new Bird(0,1,0,36,"Black Vulture"));
-        birdStack.add(new Bird(2,2,0,37,"Black-Bellied Whistling-Duck"));
-        birdStack.add(new Bird(1,2,0,38,"Black-billed Maggie"));
-        birdStack.add(new Bird(2,3,0,39,"Black-Crowned Night Heron"));
-        birdStack.add(new Bird(2,2,0,40,"Black-necked Stilt"));
-        birdStack.add(new Bird(1,3,0,41,"Blue Grosbeak"));
-        birdStack.add(new Bird(0,2,0,42,"Blue Jay"));
-        birdStack.add(new Bird(0,1,0,43,"Blue-Gray Gnatcatcher"));
-        birdStack.add(new Bird(1,2,0,44,"Blue-Winged Warbler"));
-        birdStack.add(new Bird(1,3,0,45,"Bobolink"));
-        birdStack.add(new Bird(1,2,0,46,"Brewer's Blackbird"));
-        birdStack.add(new Bird(1,2,0,47,"Bronzed Cowbird"));
-        birdStack.add(new Bird(2,2,0,48,"Brown Pelican"));
-        birdStack.add(new Bird(1,1,0,49,"Brown-headed Cowbird"));
-        birdStack.add(new Bird(1,2,0,50,"Burrowing Owl"));
-        birdStack.add(new Bird(0,2,0,51,"Bushtit"));
-        birdStack.add(new Bird(0,1,0,52,"California Condor"));
-        birdStack.add(new Bird(0,3,0,53,"California Quail"));
+
+        int id;
+        int eggLimit;
+        String name;
+        int points;
+
+        JSONParser parser = new JSONParser();
+
+        try {
+            JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("birds.json"));
+            JSONArray birds = (JSONArray) jsonObject.get("birds");
+
+            ArrayList<Habitats> habitats = new ArrayList<>();
+            HashMap<FoodTypes, Integer> foodTypes = new HashMap<>();
+
+            for (Object o : birds) {
+                JSONObject bird = (JSONObject) o;
+
+                id = ((Long) bird.get("ID")).intValue();
+                name = (String) bird.get("EnglishName");
+
+                if (bird.get("EggLimit") != null){
+                    eggLimit = ((Long) bird.get("EggLimit")).intValue();
+                } else {
+                    eggLimit = 10;
+                }
+
+                if (bird.get("VictoryPoints") != null){
+                    points = ((Long) bird.get("VictoryPoints")).intValue();
+                } else {
+                    points = 0;
+                }
+
+                //System.out.println(id);
+
+                if (bird.get("HabitatForest").equals("y")){
+                    habitats.add(Habitats.Forrest);
+                } else if (bird.get("HabitatGrasslands").equals("y")){
+                    habitats.add(Habitats.Grasslands);
+                } else if (bird.get("HabitatWetlands").equals("y")){
+                    habitats.add(Habitats.Wetlands);
+                }
+
+                if (bird.get("FoodSeed") != null){
+                    foodTypes.put(FoodTypes.Seed, ((Long) bird.get("FoodSeed")).intValue());
+                } else if(bird.get("FoodNone") != null){
+                    foodTypes.put(FoodTypes.None, ((Long) bird.get("FoodNone")).intValue());
+                } else if(bird.get("FoodWild") != null){
+                    foodTypes.put(FoodTypes.Wild, ((Long) bird.get("FoodWild")).intValue());
+                } else if(bird.get("FoodInvertebrate") != null){
+                    foodTypes.put(FoodTypes.Invertebrate, ((Long) bird.get("FoodInvertebrate")).intValue());
+                } else if(bird.get("FoodFruit") != null){
+                    foodTypes.put(FoodTypes.Fruit, ((Long) bird.get("FoodFruit")).intValue());
+                } else if(bird.get("FoodFish") != null){
+                    foodTypes.put(FoodTypes.Fish, ((Long) bird.get("FoodFish")).intValue());
+                } else if(bird.get("FoodRodent") != null){
+                    foodTypes.put(FoodTypes.Rodent, ((Long) bird.get("FoodRodent")).intValue());
+                }
+
+                birdStack.add(new Bird(0, id, name, eggLimit, points, foodTypes, habitats));
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // return a random bird card add removes it from the bird card stack
