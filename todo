@@ -1,4 +1,4 @@
-- implement model View
+- implement model View (DONE)
   * seperate packages for the model and the View
   --> rename game package to model
     * move main class out of the package and use it as the conroller
@@ -12,17 +12,25 @@
   * add birdsOnWetlands function
   
   
-- update bird class
+- update bird class (DONE)
  * max eggcount
  * different habitats (enum)
  * different foodtypes (enum)
  * score
- * (special power)
+ * (special power) (maybe later)
+ 
+- update all the functions which are using the old bird fields(requiredfood, habitat) (IMPORTANT)
+ * functions should use the new fields instead
  
  - update player class
+  * update layEggs 
+   * eggs should be layed on birds on the board
   * update drawBirdCard function
+   * amount of cards to draw depends on how many birds are in the wetlands
  
 - test cases
+ * implement Unit Tests for all your functions
+ * write acceptance test Cases in AcceptanceTestMain
  
-- bonus cards
+- bonus cards (maybe later)
  
