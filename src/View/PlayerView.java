@@ -2,6 +2,7 @@ package View;
 
 import Model.Bird;
 import Model.FoodTypes;
+import Model.Habitats;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,5 +39,22 @@ public class PlayerView {
     //prints the how many eggs the player gained
     public static void printLayEggs(int newEggs, int eggCount) {
         System.out.println("Your egg count has increased by " + newEggs  + "! Your new egg count is " +eggCount + "!");
+    }
+
+    public static Habitats chooseHabitat(Bird bird) {
+        System.out.println("The bird " + bird.getName() + " can be placed in the following habitats: ");
+        System.out.println(bird.getHabitats().size());
+        for (Habitats habitat : bird.getHabitats()){
+            System.out.println(habitat.getValue() + " " + habitat);
+        }
+        System.out.println("Enter number of the habitat you want to place the bird in: ");
+        Scanner in = new Scanner(System.in);
+        int temp = in.nextInt();
+        for (Habitats habitat : bird.getHabitats()){
+            if (habitat.getValue() == temp){
+                return habitat;
+            }
+        }
+        return bird.getHabitats().get(0);
     }
 }

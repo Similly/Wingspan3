@@ -52,10 +52,12 @@ public class Player {
             bird = birds.get(i);
             requiredFood = bird.getFood();
             for (Map.Entry me : requiredFood.entrySet()){
-                if (!(me.getValue() != null && ((int) me.getValue()) >= this.food.get(me.getKey()))){
+                if ((me.getValue() != null && ((int) me.getValue()) <= this.food.get(me.getKey()))){
+                    available = true;
+                } else {
                     available = false;
                     break;
-                } else available = true;
+                }
             }
             if (available){
                 availableBirds.add(bird);
@@ -66,14 +68,19 @@ public class Player {
     }
 
     //plays a bird to the board
-    public void playBird(Bird bird){
-        int habitat = bird.getHabitat();
+    public void playBird(Bird bird, Habitats habitat){
+        HashMap<FoodTypes, Integer> requiredFood = bird.getFood();
+
         for (int i = 0; i < 5; i++){
-            if (this.board.spacefree(habitat, i)){
+            if (this.board.spacefree(habitat.getValue(), i)){
 
-                this.board.placeCard(habitat, i,bird);
+                this.board.placeCard(habitat.getValue(), i, bird);
 
-                foodCount -= bird.getRequiredFood();
+                for (Map.Entry me : requiredFood.entrySet()){
+                    if (me.getValue() != null){
+                        food.put((FoodTypes) me.getKey(), food.get(me.getKey()) - (int) me.getValue());
+                    }
+                }
 
                 birds.remove(bird);
                 break;
@@ -114,8 +121,23 @@ public class Player {
     public ArrayList<String> getAvailableMoves(){
 
         ArrayList<String> availableMoves = new ArrayList<>();
-        for (int i = 0; i < birds.size(); i++){
-            if (birds.get(i).getRequiredFood() <= foodCount){
+
+        HashMap<FoodTypes, Integer> requiredFood;
+        Bird bird;
+        boolean available = true;
+
+        for(int i = 0; i < birds.size(); i++){
+            bird = birds.get(i);
+            requiredFood = bird.getFood();
+            for (Map.Entry me : requiredFood.entrySet()){
+                if ((me.getValue() != null && ((int) me.getValue()) <= this.food.get(me.getKey()))){
+                    available = true;
+                } else {
+                    available = false;
+                    break;
+                }
+            }
+            if (available){
                 availableMoves.add("1: place bird");
                 break;
             }

@@ -54,8 +54,11 @@ public class Main {
 
             switch (moveNumber){
                 case 1:
-                    PlayerView.printAvailableBirds(player.getAvailableBirds());
-                    player.playBird(PlayerView.chooseBirdFromList(player.getAvailableBirds()));
+                    ArrayList<Bird> availableBirds = player.getAvailableBirds();
+                    PlayerView.printAvailableBirds(availableBirds);
+                    Bird bird = PlayerView.chooseBirdFromList(availableBirds);
+                    Habitats habitat = PlayerView.chooseHabitat(bird);
+                    player.playBird(bird, habitat);
                     break;
                 case 2:
                     PlayerView.printGainFood(player.gainFood());
@@ -103,14 +106,14 @@ public class Main {
             JSONObject jsonObject = (JSONObject) parser.parse(new FileReader("birds.json"));
             JSONArray birds = (JSONArray) jsonObject.get("birds");
 
-            ArrayList<Habitats> habitats = new ArrayList<>();
-            HashMap<FoodTypes, Integer> foodTypes = new HashMap<>();
-
             for (Object o : birds) {
                 JSONObject bird = (JSONObject) o;
 
                 id = ((Long) bird.get("ID")).intValue();
                 name = (String) bird.get("EnglishName");
+
+                ArrayList<Habitats> habitats = new ArrayList<>();
+                HashMap<FoodTypes, Integer> foodTypes = new HashMap<>();
 
                 if (bird.get("EggLimit") != null){
                     eggLimit = ((Long) bird.get("EggLimit")).intValue();
