@@ -102,18 +102,16 @@ public class Board {
 		}
 		return numBirds;
 	}
-	// returns the number of birds currently on the forrest section of the board
-		public int birdsInWetLands()
+
+	// returns the number of birds currently on the wetlands section of the board
+	public int birdsInWetLands()
+	{
+		int numBirds = 0;
+		for(int i =0 ; i < 5; i++)
 		{
-			int numBirds = 0;
-			for(int i =0 ; i < 5; i++)
-			{
-				if(!board[2][i].getName().equals("-"))
-					numBirds++;
-			}
-			return numBirds;
+			if(!board[2][i].getName().equals("-"))
+				numBirds++;
 		}
+		return numBirds;
+	}
 }
-
-
-

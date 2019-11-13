@@ -22,8 +22,15 @@ public class PlayerView {
     //prints the available birds to play
     public static void printAvailableBirds(ArrayList<Bird> availableBirds){
         for (int i = 0; i < availableBirds.size(); i++){
-            System.out.println(i+1 + ": " + availableBirds.get(i).getName() + ". Food cost " + availableBirds.get(i).getRequiredFood()
-                    + ". lives in " + availableBirds.get(i).getHabitat());
+            HashMap<FoodTypes, Integer> food = availableBirds.get(i).getFood();
+            System.out.println(i+1 + ": " + availableBirds.get(i).getName());
+            for (Map.Entry me : food.entrySet()){
+                System.out.println("    FoodType: " + me.getKey() + "; Amount: " + me.getValue());
+            }
+            for (Habitats habitat : availableBirds.get(i).getHabitats()){
+                System.out.println("    Habitat: " + habitat.name());
+            }
+
         }
     }
 
