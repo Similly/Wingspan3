@@ -20,13 +20,13 @@
  * (special power) (maybe later)
  
 - update all the functions which are using the old bird fields(requiredfood, habitat) (IMPORTANT)
- * functions should use the new fields instead
+ * functions should use the new fields instead (DONE for the models, needs to be implemented for the view)
  
- - update player class
-  * update layEggs 
-   * eggs should be layed on birds on the board
-  * update drawBirdCard function
-   * amount of cards to draw depends on how many birds are in the wetlands
+- update player class
+ * update layEggs 
+  * eggs should be layed on birds on the board
+ * update drawBirdCard function
+  * amount of cards to draw depends on how many birds are in the wetlands
  
 - test cases
  * implement Unit Tests for all your functions
