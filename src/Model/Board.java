@@ -1,5 +1,7 @@
 package Model;
 
+import Model.Bird;
+import View.BoardView;
 
 public class Board {
 	private Bird[][] board;
@@ -22,9 +24,9 @@ public class Board {
 	//print out the board 
 	public void display () {
 		
-		//BoardView.displayBoard(this);
+		BoardView.displayBoard(this);
 		
-		
+		/*
 		for(int row=0;row<3;row++)
 		{
 			for(int col=0;col<5;col++)
@@ -36,7 +38,7 @@ public class Board {
 			System.out.print("|");
 			System.out.println();
 		}
-		System.out.println();
+		System.out.println();*/
     }
 	
 	//place a card on the board in specified row and col 
@@ -112,6 +114,10 @@ public class Board {
 					numBirds++;
 			}
 			return numBirds;
+		}
+		public Bird[][] getBoard()
+		{
+			return board; 
 		}
 }
 
