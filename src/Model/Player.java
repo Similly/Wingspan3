@@ -3,6 +3,7 @@ package Model;
 import Controller.Main;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Player {
@@ -14,6 +15,7 @@ public class Player {
     private ArrayList<Bird> birds;
     private Board board;
     private Dice dice;
+    private HashMap<FoodTypes, Integer> food;
 
     public Player(int id){
         this.id = id;
@@ -26,11 +28,21 @@ public class Player {
         }
         this.board = new Board();
         this.dice = new Dice();
+        this.food = new HashMap<>();
+        this.food.put(FoodTypes.None, 1);
+        this.food.put(FoodTypes.Rodent, 1);
+        this.food.put(FoodTypes.Fish, 1);
+        this.food.put(FoodTypes.Fruit, 1);
+        this.food.put(FoodTypes.Invertebrate, 1);
+        this.food.put(FoodTypes.Wild, 1);
+        this.food.put(FoodTypes.Seed, 1);
     }
 
     //returns the available birds
     public ArrayList<Bird> getAvailableBirds(){
         ArrayList<Bird> availableBirds = new ArrayList<Bird>();
+
+
 
         for(int i = 0; i < birds.size(); i++){
             if (foodCount >= birds.get(i).getRequiredFood()){
@@ -58,12 +70,17 @@ public class Player {
     }
 
     // gets food based on how many birds are in the first habitat
-    public int gainFood(){
-        int gainedFood = 1;
-        gainedFood += board.birdsInForrest();
-        this.foodCount += gainedFood;
+    public HashMap<FoodTypes, Integer> gainFood(){
 
-        return gainedFood;
+        int diceRolls = 1;
+        diceRolls += board.birdsInForrest();
+
+        for (int i = 0; i < diceRolls; i++){
+            FoodTypes foodType = dice.rollForFood();
+            this.food.put(foodType, this.food.get(foodType) + 1);
+        }
+
+        return this.food;
         //System.out.println("You have " + board.birdsInForrest() + " birds in your forrest section, so your food count has increased by " + gainedFood + "! Your new food count is " + this.foodCount + "!");
     }
     // lays eggs based on how many birds are in the middle habitat

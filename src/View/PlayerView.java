@@ -1,8 +1,11 @@
 package View;
 
 import Model.Bird;
+import Model.FoodTypes;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class PlayerView {
@@ -24,8 +27,12 @@ public class PlayerView {
     }
 
     //prints the gained food
-    public static void printGainFood(int gainedFood, int foodCount){
-        System.out.println("Your food count has increased by " + gainedFood + "! Your new food count is " + foodCount + "!");
+    public static void printGainFood(HashMap<FoodTypes, Integer> gainedFood){
+        System.out.println("Your new food count is:");
+        for (Map.Entry me : gainedFood.entrySet()){
+            System.out.println("Food Type: " + me.getKey() + " ; Value: " + me.getValue());
+        }
+        System.out.println("\n");
     }
 
     //prints the how many eggs the player gained

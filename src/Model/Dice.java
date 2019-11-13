@@ -1,6 +1,8 @@
 package Model;
 
-//Dice class to produce a roll of dice for game 
+import java.util.Random;
+
+//Dice class to produce a roll of dice for game
 public class Dice {
 	private int roll;
 	
@@ -13,5 +15,9 @@ public class Dice {
 	public int roll() {
 		this.roll=(int)(Math.random()*6)+1;
 		return this.roll; 
-	}	
+	}
+
+	public FoodTypes rollForFood(){
+		return FoodTypes.values()[new Random().nextInt(FoodTypes.values().length)];
+	}
 }

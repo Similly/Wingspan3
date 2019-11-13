@@ -58,7 +58,7 @@ public class Main {
                     player.playBird(PlayerView.chooseBirdFromList(player.getAvailableBirds()));
                     break;
                 case 2:
-                    PlayerView.printGainFood(player.gainFood(), player.getFoodCount());
+                    PlayerView.printGainFood(player.gainFood());
                     break;
                 case 3:
                     PlayerView.printLayEggs(player.layEggs(), player.getEggCount());
