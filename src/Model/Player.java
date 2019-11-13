@@ -4,7 +4,10 @@ import Controller.Main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
+
+import static Model.FoodTypes.*;
 
 public class Player {
 
@@ -34,19 +37,28 @@ public class Player {
         this.food.put(FoodTypes.Fish, 1);
         this.food.put(FoodTypes.Fruit, 1);
         this.food.put(FoodTypes.Invertebrate, 1);
-        this.food.put(FoodTypes.Wild, 1);
+        this.food.put(Wild, 1);
         this.food.put(FoodTypes.Seed, 1);
     }
 
     //returns the available birds
     public ArrayList<Bird> getAvailableBirds(){
         ArrayList<Bird> availableBirds = new ArrayList<Bird>();
-
-
+        HashMap<FoodTypes, Integer> requiredFood;
+        Bird bird;
+        boolean available = true;
 
         for(int i = 0; i < birds.size(); i++){
-            if (foodCount >= birds.get(i).getRequiredFood()){
-                availableBirds.add(birds.get(i));
+            bird = birds.get(i);
+            requiredFood = bird.getFood();
+            for (Map.Entry me : requiredFood.entrySet()){
+                if (!(me.getValue() != null && ((int) me.getValue()) >= this.food.get(me.getKey()))){
+                    available = false;
+                    break;
+                } else available = true;
+            }
+            if (available){
+                availableBirds.add(bird);
             }
         }
 
