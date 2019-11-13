@@ -36,7 +36,7 @@ public class Bird {
         this.food = food;
     }
 
-    public int getHabitat() {
+    /*public int getHabitat() {
         return habitat;
     }
 
@@ -50,7 +50,7 @@ public class Bird {
 
     public void setRequiredFood(int requiredFood) {
         this.requiredFood = requiredFood;
-    }
+    }*/
 
     public int getEggsOnBird() {
         return eggsOnBird;

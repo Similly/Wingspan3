@@ -104,9 +104,6 @@ public class Board {
 		}
 		public Bird[][] getBoard()
 		{
-			return board; 
+			return board;
 		}
 }
-
-
-

@@ -139,17 +139,23 @@ public class Main {
 
                 if (bird.get("FoodSeed") != null){
                     foodTypes.put(FoodTypes.Seed, ((Long) bird.get("FoodSeed")).intValue());
-                } else if(bird.get("FoodNone") != null){
+                }
+                if(bird.get("FoodNone") != null){
                     foodTypes.put(FoodTypes.None, ((Long) bird.get("FoodNone")).intValue());
-                } else if(bird.get("FoodWild") != null){
+                }
+                if(bird.get("FoodWild") != null){
                     foodTypes.put(FoodTypes.Wild, ((Long) bird.get("FoodWild")).intValue());
-                } else if(bird.get("FoodInvertebrate") != null){
+                }
+                if(bird.get("FoodInvertebrate") != null){
                     foodTypes.put(FoodTypes.Invertebrate, ((Long) bird.get("FoodInvertebrate")).intValue());
-                } else if(bird.get("FoodFruit") != null){
+                }
+                if(bird.get("FoodFruit") != null){
                     foodTypes.put(FoodTypes.Fruit, ((Long) bird.get("FoodFruit")).intValue());
-                } else if(bird.get("FoodFish") != null){
+                }
+                if(bird.get("FoodFish") != null){
                     foodTypes.put(FoodTypes.Fish, ((Long) bird.get("FoodFish")).intValue());
-                } else if(bird.get("FoodRodent") != null){
+                }
+                if(bird.get("FoodRodent") != null){
                     foodTypes.put(FoodTypes.Rodent, ((Long) bird.get("FoodRodent")).intValue());
                 }
 
