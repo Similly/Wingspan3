@@ -102,7 +102,15 @@ public class Player {
         return this.food;
         //System.out.println("You have " + board.birdsInForrest() + " birds in your forrest section, so your food count has increased by " + gainedFood + "! Your new food count is " + this.foodCount + "!");
     }
+    
     // lays eggs based on how many birds are in the middle habitat
+    //pick a bird to lay egg on 
+    //get birds on board 
+    //check available 
+    //ask user
+    //execute
+    //number of eggs laying down depend on how many birds in habitats 
+    //lay all eggs on one bird for now 
     public int layEggs(){
     	int newEggs = 1;
     	newEggs += board.birdsInGrasslands();
