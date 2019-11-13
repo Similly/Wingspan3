@@ -1,4 +1,4 @@
-- implement model View (DONE - Not done for board yet)
+- implement model View (DONE)
   * seperate packages for the model and the View
   --> rename game package to model
     * move main class out of the package and use it as the conroller
@@ -9,7 +9,7 @@
 
 - update board class
   * fields array to contain BIrds nnot Strings -- done
-  * add birdsOnWetlands function
+  * add birdsOnWetlands function -- done
   
   
 - update bird class (DONE)
