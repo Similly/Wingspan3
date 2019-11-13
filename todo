@@ -1,4 +1,4 @@
-- implement model View (DONE)
+- implement model View (DONE - Not done for board yet)
   * seperate packages for the model and the View
   --> rename game package to model
     * move main class out of the package and use it as the conroller
@@ -31,6 +31,8 @@
 - test cases
  * implement Unit Tests for all your functions
  * write acceptance test Cases in AcceptanceTestMain
+ 
+ - update scoring mechanism
  
 - bonus cards (maybe later)
  
