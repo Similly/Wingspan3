@@ -130,6 +130,14 @@ public class Player {
 		addEggs += board.birdsInForrest();	
     	
     	sel.setEggsOnBird(addEggs);
+    	
+    	//update the board with updated Bird object
+    	int[] pos=board.findPos(sel.getId()); 
+    	
+    	int row=pos[0];
+    	int col=pos[1];
+    	
+    	board.placeCard(row, col, sel);
     }
     
     //goes through specified habitat and returns an array of available birds to lay eggs on

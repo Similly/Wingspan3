@@ -45,7 +45,7 @@ public class Board {
 		return false;
 	}
 
-
+//checks to see if the board is empty 
 	public boolean isEmpty() {
 		for (int row = 0; row < 3; row++){
 			for (int col = 0; col < 5; col++){
@@ -104,11 +104,13 @@ public class Board {
 			}
 			return numBirds;
 		}
+		//returns the current board 
 		public Bird[][] getBoard()
 		{
 			return board;
 		}
 		
+		//returns all the birds from specified row
 		public ArrayList<Bird> getBirds(int row)
 		{
 			ArrayList<Bird> birds=new ArrayList<>();
@@ -121,13 +123,12 @@ public class Board {
 						
 					birds.add(board[row][col]);
 					}
-				}
-				
-				
+				}				
 				
 			return birds;
 		}
-		
+	
+		//returns a Bird with specified ID
 		public Bird searchBoard(int ID)
 		{
 			for (int row = 0; row < 3; row++){
@@ -139,5 +140,22 @@ public class Board {
 			}
 			
 			return null; 
+		}
+		
+		//returns the position row, col) in an int[] of Bird with specified ID
+		public int[] findPos(int ID)
+		{
+			int[] pos = new int[2];
+			for (int row = 0; row < 3; row++){
+				for (int col = 0; col < 5; col++){
+					if (board[row][col].getId()==ID){
+						pos[0]=row;
+						pos[1]=col;
+						return pos;
+					}
+				}
+			}
+			
+			return pos; 
 		}
 }
