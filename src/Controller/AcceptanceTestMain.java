@@ -10,6 +10,7 @@ public class AcceptanceTestMain {
     public static void main(){
     	 System.out.println("Enter the number of the test you want to run");
     	 System.out.println("Test 0: 1 player, plays a bird turn 1 then skips the rest of his turns");
+    	 System.out.println("Test 1: 1 player, gains food then plays a bird he could not play before");
     	 int testID = MainView.getInt(); 
         switch (testID){
             case 0:
@@ -43,14 +44,28 @@ public class AcceptanceTestMain {
         
         System.out.println("The expected out put is: ");
         
-        System.out.println("| Indigo Bunti|            -|            -|            -|            -|");
         System.out.println("|            -|            -|            -|            -|            -|");
+        System.out.println("| Indigo Bunti|            -|            -|            -|            -|");
         System.out.println("|            -|            -|            -|            -|            -|");
         
     }
 
     private static void acceptanceTest1() {
         System.out.println("test 1");
+        
+        int [] moves = {2};
+        Model.Player p1 = new Model.Player(1);
+        p1.testClearFood();
+		p1.testClearBirdStack();
+		p1.testAddBird(Main.testDrawBird(1));
+		p1.testAddBird(Main.testDrawBird(2));
+		
+        Controller.Main.testTurn(p1, moves);
+        System.out.println("\nThe expected out put is:");
+        
+        System.out.println("no birds printed before gaining food");
+        System.out.println("first bird is Indigo bunting");
+        System.out.println("second bird is Rose-breasted Grosebeak");
     }
 
     private static void acceptanceTest2() {

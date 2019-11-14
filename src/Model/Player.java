@@ -256,4 +256,21 @@ public class Player {
     {
     	birds.add(b);
     }
+    public void testClearBirdStack() { birds.clear();}
+    public void testGainFood() {
+    this.food.put(FoodTypes.Rodent, 1);
+    this.food.put(FoodTypes.Fish, 1);
+    this.food.put(FoodTypes.Fruit, 1);
+    this.food.put(FoodTypes.Invertebrate, 1);
+    this.food.put(FoodTypes.Wild, 1);
+    this.food.put(FoodTypes.Seed, 1);
+    }
+    public void testClearFood() {
+    	this.food.put(FoodTypes.Rodent, 0);
+        this.food.put(FoodTypes.Fish, 0);
+        this.food.put(FoodTypes.Fruit, 0);
+        this.food.put(FoodTypes.Invertebrate, 0);
+        this.food.put(FoodTypes.Wild, 0);
+        this.food.put(FoodTypes.Seed, 0);
+    }
 }

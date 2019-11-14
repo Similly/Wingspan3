@@ -241,12 +241,20 @@ public class Main {
     		switch(input[i])
     		{   
     			case 1:
-                    Bird bird = testDrawBird(++i);
-                    Habitats habitat = Habitats.Forrest;
+                    Bird bird = testDrawBird(1);
+                    Habitats habitat = Habitats.Grasslands;
                     player.playBird(bird, habitat);
     				break;
     			case 2:
-    				break;
+    				System.out.println("printing available birds:");
+    				ArrayList<Bird> availableBirds = player.getAvailableBirds();
+    				PlayerView.printAvailableBirds(availableBirds);
+    				System.out.println("gaining food");
+    				player.testGainFood();
+    				System.out.println("printing available birds again");
+    				availableBirds = player.getAvailableBirds();
+    				PlayerView.printAvailableBirds(availableBirds);
+    				return;
     			case 3:
     				break;
     			case 4:
