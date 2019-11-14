@@ -11,8 +11,6 @@ public class Bird {
 
     private int id;
     private String name;
-    private int habitat;
-    private int requiredFood;
     private int eggsOnBird;
     private int maxEggCount;
     private int score;
@@ -35,22 +33,6 @@ public class Bird {
         this.habitats = habitats;
         this.food = food;
     }
-
-    /*public int getHabitat() {
-        return habitat;
-    }
-
-    public void setHabitat(int habitat) {
-        this.habitat = habitat;
-    }
-
-    public int getRequiredFood() {
-        return requiredFood;
-    }
-
-    public void setRequiredFood(int requiredFood) {
-        this.requiredFood = requiredFood;
-    }*/
 
     public int getEggsOnBird() {
         return eggsOnBird;
