@@ -105,7 +105,7 @@ public class Player {
     }
     
     //lay eggs on the selected bird
-    public void layEggs(){
+    public int layEggs(){
     	
     	//check forrest
     	ArrayList<Bird> birdsForrest = this.availableBirds(0);
@@ -128,6 +128,9 @@ public class Player {
 
 		int addEggs = 1;
 		addEggs += board.birdsInForrest();	
+		
+		
+		eggCount = eggCount+addEggs; //update the egg count of the player
     	
     	sel.setEggsOnBird(addEggs);
     	
@@ -138,7 +141,10 @@ public class Player {
     	int col=pos[1];
     	
     	board.placeCard(row, col, sel);
+    	
+    	return addEggs; 
     }
+    
     
     //goes through specified habitat and returns an array of available birds to lay eggs on
     public ArrayList<Bird> availableBirds(int row) {
