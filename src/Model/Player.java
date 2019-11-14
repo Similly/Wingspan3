@@ -137,28 +137,27 @@ public class Player {
 		int num = in.nextInt();
 		int ID=allBirds.get(num-1).getId();
 		Bird sel=board.searchBoard(ID);
-		
+
 		//need to get the habitat of the bird selected so i can figure out how many eggs to lay 
-		
+		int addEggs = 1;
+		addEggs += board.birdsInForrest();
     	
     	//System.out.println(sel.getEggsOnBird());
-    	sel.setEggsOnBird(3);//this will change when figure out how to get habitat of selected bird
+    	sel.setEggsOnBird(addEggs);//this will change when figure out how to get habitat of selected bird
     	//System.out.println(sel.getEggsOnBird());
     	//System.out.println(sel.getName());
     	
     	return 0; //unsure what the function should be returning?
-    	}
+    }
     
-    public ArrayList<Bird> availableBirds(int row)
-    { int newEggs=1;
+    public ArrayList<Bird> availableBirds(int row) {
+        int newEggs=1;
     	ArrayList<Bird> birds = board.getBirds(row);
     	ArrayList<Bird> birdsFinal = new ArrayList<>(); 
-    	if(row == 0)
-    	{
-    	newEggs+=board.birdsInForrest();
+    	if(row == 0) {
+    	    newEggs+=board.birdsInForrest();
     	}
-    	else if(row==2)
-    	{
+    	else if(row==2) {
     		newEggs+=board.birdsInGrasslands();
     	}
     	else {
@@ -167,12 +166,10 @@ public class Player {
     	
     		
     	
-    	for(int index=0;index<(birds.size());index++)
-    	{
+    	for(int index=0;index<(birds.size());index++) {
     		
     		//check if egg can be added
-    		if(birds.get(index).getMaxEggCount()>=(birds.get(index).getEggsOnBird()+newEggs))
-    		{
+    		if(birds.get(index).getMaxEggCount()>=(birds.get(index).getEggsOnBird()+newEggs)) {
     			birdsFinal.add(birds.get(index));
     		}
     		 
@@ -180,7 +177,7 @@ public class Player {
     	}
     	
     	
-return birdsFinal;
+        return birdsFinal;
     }
 
     // add a bird to the players bird arraylist

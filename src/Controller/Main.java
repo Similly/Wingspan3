@@ -27,8 +27,8 @@ public class Main {
     	    	
 
         initBirds();
-        //init();
-/*
+        init();
+
         turn = 0;
         round = 0;
         while (round < 3){
@@ -37,7 +37,7 @@ public class Main {
             if(turn%amountOfPlayers == 0)
             	round++;
         }
-    	printScores();*/
+    	printScores();
         
         
         /* code using to test lay eggs function
