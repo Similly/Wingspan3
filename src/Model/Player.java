@@ -211,9 +211,20 @@ public class Player {
         return availableMoves;
     }
     // calculates score for the player
-    public int getScore()
-    {
-    	return eggCount + board.numBirdsOnBoard();
+    public int getScore() {
+
+        ArrayList<Bird> birdsOnBoard = board.getBirds(0);
+        birdsOnBoard.addAll(board.getBirds(1));
+        birdsOnBoard.addAll(board.getBirds(2));
+
+        int birdScore = 0;
+
+        for (Bird bird : birds){
+            birdScore += bird.getScore();
+        }
+
+
+        return eggCount + birdScore;
     }
 
     public int getId() {
