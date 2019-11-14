@@ -70,4 +70,23 @@ public class PlayerView {
     public static void printDrawBirds(int newBirds) {
         System.out.println("You drawed " + newBirds + " bird card(s)!");
     }
+    
+    public static void printLayEggBirds(ArrayList<Bird> allBirds)
+    {
+    	System.out.println("All Available Birds to Lay Eggs on:");
+    	for(int i =0;i<allBirds.size();i++)
+    	{
+    		System.out.println(i+1+". "+allBirds.get(i).getName()+" ");
+    	}
+    	System.out.println();
+    }
+    
+    public static int selectBird()
+    {
+    	System.out.println("Please Enter the Number of the Bird You Would Like to Lay Your Eggs On");
+
+		Scanner in = new Scanner(System.in);
+		int num = in.nextInt();
+		return num;
+    }
 }

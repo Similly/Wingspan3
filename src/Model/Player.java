@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.Main;
+import View.PlayerView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -103,14 +104,8 @@ public class Player {
         //System.out.println("You have " + board.birdsInForrest() + " birds in your forrest section, so your food count has increased by " + gainedFood + "! Your new food count is " + this.foodCount + "!");
     }
     
-    // lays eggs based on how many birds are in the middle habitat
-    //get birds on board 
-    //check available 
-    //ask user to pick bird to lay egg(s) on
-    //execute
-    //number of eggs laying down depend on how many birds in habitats 
-    //lay all eggs on one bird for now 
-    public int layEggs(){
+    //lay eggs on the selected bird
+    public void layEggs(){
     	
     	//check forrest
     	ArrayList<Bird> birdsForrest = this.availableBirds(0);
@@ -125,58 +120,33 @@ public class Player {
     	allBirds.addAll(birdsGrass);
     	allBirds.addAll(birdsWet);
     	
-    	System.out.println("All Available Birds to Lay Eggs on:");
-    	for(int i =0;i<allBirds.size();i++)
-    	{
-    		System.out.println(i+1+". "+allBirds.get(i).getName()+" ");
-    	}
-    	System.out.println();
-    	System.out.println("Please Enter the Number of the Bird You Would Like to Lay Your Eggs On");
-
-		Scanner in = new Scanner(System.in);
-		int num = in.nextInt();
+    	PlayerView.printLayEggBirds(allBirds);
+    	
+    	int num=PlayerView.selectBird();
 		int ID=allBirds.get(num-1).getId();
 		Bird sel=board.searchBoard(ID);
 
-		//need to get the habitat of the bird selected so i can figure out how many eggs to lay 
 		int addEggs = 1;
-		addEggs += board.birdsInForrest();
+		addEggs += board.birdsInForrest();	
     	
-    	//System.out.println(sel.getEggsOnBird());
-    	sel.setEggsOnBird(addEggs);//this will change when figure out how to get habitat of selected bird
-    	//System.out.println(sel.getEggsOnBird());
-    	//System.out.println(sel.getName());
-    	
-    	return 0; //unsure what the function should be returning?
+    	sel.setEggsOnBird(addEggs);
     }
     
+    //goes through specified habitat and returns an array of available birds to lay eggs on
     public ArrayList<Bird> availableBirds(int row) {
         int newEggs=1;
     	ArrayList<Bird> birds = board.getBirds(row);
     	ArrayList<Bird> birdsFinal = new ArrayList<>(); 
-    	if(row == 0) {
-    	    newEggs+=board.birdsInForrest();
-    	}
-    	else if(row==2) {
-    		newEggs+=board.birdsInGrasslands();
-    	}
-    	else {
-    		newEggs+=board.birdsInWetLands();
-    	}
-    	
-    		
+    	newEggs+=board.birdsInForrest();    	    		
     	
     	for(int index=0;index<(birds.size());index++) {
     		
     		//check if egg can be added
     		if(birds.get(index).getMaxEggCount()>=(birds.get(index).getEggsOnBird()+newEggs)) {
     			birdsFinal.add(birds.get(index));
-    		}
-    		 
+    		}  
     		
-    	}
-    	
-    	
+    	}     	
         return birdsFinal;
     }
 
