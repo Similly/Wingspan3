@@ -113,8 +113,15 @@ public class Player {
     }
 
     // add a bird to the players bird arraylist
-    public void drawBird(){
-        birds.add(Main.drawBirdFromStack());
+    public int drawBird(){
+        int drawBirds = 1;
+        drawBirds += board.birdsInWetLands();
+
+        for (int i = 0; i < drawBirds; i++){
+            birds.add(Main.drawBirdFromStack());
+        }
+
+        return drawBirds;
     }
 
     // returns the moves a player can make

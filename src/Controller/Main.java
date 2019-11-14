@@ -67,7 +67,8 @@ public class Main {
                     PlayerView.printLayEggs(player.layEggs(), player.getEggCount());
                     break;
                 case 4:
-                    player.drawBird();
+                    int newBirds = player.drawBird();
+                    PlayerView.printDrawBirds(newBirds);
                     break;
                 case 5:
                     player.setActionCubes(8);
@@ -131,9 +132,11 @@ public class Main {
 
                 if (bird.get("HabitatForest").equals("y")){
                     habitats.add(Habitats.Forrest);
-                } else if (bird.get("HabitatGrasslands").equals("y")){
+                }
+                if (bird.get("HabitatGrasslands").equals("y")){
                     habitats.add(Habitats.Grasslands);
-                } else if (bird.get("HabitatWetlands").equals("y")){
+                }
+                if (bird.get("HabitatWetlands").equals("y")){
                     habitats.add(Habitats.Wetlands);
                 }
 
