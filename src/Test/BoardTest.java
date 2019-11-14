@@ -83,4 +83,34 @@ public class BoardTest {
     	
     	assertEquals(board.birdsInWetLands(),1);
     }
+    
+    @Test 
+    public void findPos()
+    {
+    	Board board=new Board(); 
+    	HashMap<FoodTypes, Integer> food = new HashMap<>();
+    	food.put(FoodTypes.Seed,1);
+    	ArrayList<Habitats> hab = new ArrayList<>();
+    	hab.add(Habitats.Forrest);    	
+    	Bird bird = new Bird(2,2, "exampleBird", 2, 2, food,hab);
+    
+    	board.placeCard(0,0,bird);
+    	
+    	int[] pos = {0,0}; 
+    	
+    	assertArrayEquals(board.findPos(2),pos);
+    }
+    /*@Test
+    public void searchBird() {
+    	Board board=new Board(); 
+    	HashMap<FoodTypes, Integer> food = new HashMap<>();
+    	food.put(FoodTypes.Seed,1);
+    	ArrayList<Habitats> hab = new ArrayList<>();
+    	hab.add(Habitats.Forrest);    	
+    	Bird bird = new Bird(2,2, "exampleBird", 2, 2, food,hab);
+    
+    	board.placeCard(0,0,bird);
+    	
+    	assertThat(board.searchBoard(2)).isEqualToComparingFieldByField(bird);
+    }*/
 }
