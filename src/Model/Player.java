@@ -127,7 +127,7 @@ public class Player {
 		Bird sel=board.searchBoard(ID);
 
 		int addEggs = 1;
-		addEggs += board.birdsInForrest();	
+		addEggs += board.birdsInGrasslands();
 		
 		
 		eggCount = eggCount+addEggs; //update the egg count of the player
@@ -151,7 +151,7 @@ public class Player {
         int newEggs=1;
     	ArrayList<Bird> birds = board.getBirds(row);
     	ArrayList<Bird> birdsFinal = new ArrayList<>(); 
-    	newEggs+=board.birdsInForrest();    	    		
+    	newEggs+=board.birdsInGrasslands();
     	
     	for(int index=0;index<(birds.size());index++) {
     		

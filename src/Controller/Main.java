@@ -96,7 +96,9 @@ public class Main {
                     PlayerView.printGainFood(player.gainFood());
                     break;
                 case 3:
-                    PlayerView.printLayEggs(player.layEggs(), player.getEggCount());
+                    int newEggs = player.layEggs();
+                    int totalEggCount = player.getEggCount();
+                    PlayerView.printLayEggs(newEggs, totalEggCount);
                     break;
                 case 4:
                     int newBirds = player.drawBird();
