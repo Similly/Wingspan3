@@ -8,9 +8,8 @@ public class MainView {
 	public static void welcomeMessage() 
 	{
 		System.out.println("+++ Welcome to Wingspan! +++\n" +
-                "Please enter amount of players(1-4):");
-	}
-	
+                "Please enter amount of players(1-4) or press 5 for acceptance testing:");
+	}	
 	// don't close scanner the program will throw a NoSuchElement Exception
 	@SuppressWarnings("resource")
 	public static int getInt()

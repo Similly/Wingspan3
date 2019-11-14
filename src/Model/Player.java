@@ -251,4 +251,9 @@ public class Player {
     public int getActionCubes() { return actionCubes; }
 
     public void setActionCubes(int actionCubes) { this.actionCubes = actionCubes; }
+ // for acceptance test.
+    public void testAddBird(Bird b)
+    {
+    	birds.add(b);
+    }
 }

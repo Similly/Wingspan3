@@ -118,6 +118,14 @@ public class Main {
     private static void init(){
     	MainView.welcomeMessage();
     	amountOfPlayers = MainView.getInt();
+    	// move to acceptance testing main
+    	if(amountOfPlayers == 5)
+    	{
+    		
+    		AcceptanceTestMain.main();
+    		System.out.println("Acceptance test over");
+    		System.exit(0);
+    	}
         players = new Player[amountOfPlayers];
 
         for (int i = 0 ; i < players.length ; i++) {
@@ -126,7 +134,6 @@ public class Main {
 
         dice = new Dice();
     }
-
     // adds the birds to the birdstack
     public static void initBirds(){
 
@@ -224,5 +231,37 @@ public class Main {
     		System.out.println("player " + i + " score is " + p.getScore());
     		i++;
     	}
+    }
+ // functions for Acceptance testing.
+    //
+    public static void testTurn(Player player, int[] input)
+    {
+    	for(int i = 0; i < 4; i++ )
+    	{
+    		switch(input[i])
+    		{   
+    			case 1:
+                    Bird bird = testDrawBird(++i);
+                    Habitats habitat = Habitats.Forrest;
+                    player.playBird(bird, habitat);
+    				break;
+    			case 2:
+    				break;
+    			case 3:
+    				break;
+    			case 4:
+    				break;
+    			case 5:
+    				break;
+    		}
+    		player.getBoard().display();
+    			
+    	}
+    }
+    
+    // Function to get specific birds for testing
+    public static Bird testDrawBird(int n)
+    {
+    	return birdStack.get(n);
     }
 }
