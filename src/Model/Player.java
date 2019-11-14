@@ -219,11 +219,9 @@ public class Player {
 
         int birdScore = 0;
 
-        for (Bird bird : birds){
+        for (Bird bird : birdsOnBoard){
             birdScore += bird.getScore();
         }
-
-
         return eggCount + birdScore;
     }
 
