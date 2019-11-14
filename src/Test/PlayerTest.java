@@ -31,6 +31,7 @@ public class PlayerTest {
         assertEquals(expected,player.getBirds().size());
     }
 
+    //This test sometimes fails, because the player object is created with 3 random birds, so sometimes the start food is not enough to play any bird.
     @Test
     public void getAvailableMoves() {
         Player player = new Player(1);
