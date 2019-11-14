@@ -48,6 +48,7 @@ public class PlayerView {
         System.out.println("Your egg count has increased by " + newEggs  + "! Your new egg count is " +eggCount + "!");
     }
 
+    //lets the player choose a habitat to play a bird in
     public static Habitats chooseHabitat(Bird bird) {
         System.out.println("The bird " + bird.getName() + " can be placed in the following habitats: ");
         System.out.println(bird.getHabitats().size());
@@ -63,5 +64,10 @@ public class PlayerView {
             }
         }
         return bird.getHabitats().get(0);
+    }
+
+    //prints how many new birds the player got
+    public static void printDrawBirds(int newBirds) {
+        System.out.println("You drawed " + newBirds + " bird card(s)!");
     }
 }

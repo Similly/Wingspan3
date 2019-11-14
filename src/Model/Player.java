@@ -5,6 +5,7 @@ import Controller.Main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 import java.util.Map.Entry;
 import java.util.Scanner;
 
@@ -13,7 +14,6 @@ import static Model.FoodTypes.*;
 public class Player {
 
     private int id;
-    private int foodCount;
     private int eggCount;
     private int actionCubes;
     private ArrayList<Bird> birds;
@@ -23,7 +23,6 @@ public class Player {
 
     public Player(int id){
         this.id = id;
-        this.foodCount = 5;
         this.eggCount = 0;
         this.actionCubes = 8;
         birds = new ArrayList<>();
@@ -38,7 +37,7 @@ public class Player {
         this.food.put(FoodTypes.Fish, 1);
         this.food.put(FoodTypes.Fruit, 1);
         this.food.put(FoodTypes.Invertebrate, 1);
-        this.food.put(Wild, 1);
+        this.food.put(FoodTypes.Wild, 1);
         this.food.put(FoodTypes.Seed, 1);
     }
 
@@ -185,8 +184,15 @@ return birdsFinal;
     }
 
     // add a bird to the players bird arraylist
-    public void drawBird(){
-        birds.add(Main.drawBirdFromStack());
+    public int drawBird(){
+        int drawBirds = 1;
+        drawBirds += board.birdsInWetLands();
+
+        for (int i = 0; i < drawBirds; i++){
+            birds.add(Main.drawBirdFromStack());
+        }
+
+        return drawBirds;
     }
 
     // returns the moves a player can make
@@ -217,7 +223,6 @@ return birdsFinal;
 
         availableMoves.add("2: gain food");
 
-      
         availableMoves.add("3: lay eggs");
       
 
@@ -236,14 +241,6 @@ return birdsFinal;
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getFoodCount() {
-        return foodCount;
-    }
-
-    public void setFoodCount(int foodCount) {
-        this.foodCount = foodCount;
     }
 
     public int getEggCount() {

@@ -1,4 +1,4 @@
-- implement model View (DONE - Not done for board yet)
+- implement model View (DONE)
   * seperate packages for the model and the View
   --> rename game package to model
     * move main class out of the package and use it as the conroller
@@ -8,8 +8,8 @@
     * add method to get user input
 
 - update board class
-  * fields array to contain BIrds nnot Strings -- done
-  * add birdsOnWetlands function
+  * fields array to contain BIrds not Strings -- done
+  * add birdsOnWetlands function -- done
   
   
 - update bird class (DONE)
@@ -19,8 +19,8 @@
  * score
  * (special power) (maybe later)
  
-- update all the functions which are using the old bird fields(requiredfood, habitat) (IMPORTANT)
- * functions should use the new fields instead (DONE for the models, needs to be implemented for the view)
+- update all the functions which are using the old bird fields(requiredfood, habitat) (IMPORTANT) (DONE)
+ * functions should use the new fields instead (DONE)
  
 - update player class
  * update layEggs 
@@ -32,7 +32,7 @@
  * implement Unit Tests for all your functions
  * write acceptance test Cases in AcceptanceTestMain
  
- - update scoring mechanism
+- update scoring mechanism
  
 - bonus cards (maybe later)
  

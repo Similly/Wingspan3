@@ -11,8 +11,6 @@ public class Bird {
 
     private int id;
     private String name;
-    private int habitat;
-    private int requiredFood;
     private int eggsOnBird;
     private int maxEggCount;
     private int score;
@@ -27,7 +25,7 @@ public class Bird {
 
     public Bird(int eggsOnBird, int id, String name, int maxEggCount, int score, HashMap<FoodTypes, Integer> food, ArrayList<Habitats> habitats){
 
-        this.eggsOnBird = 0;
+        this.eggsOnBird = eggsOnBird;
         this.maxEggCount = maxEggCount;
         this.score = score;
         this.id = id;
@@ -35,6 +33,7 @@ public class Bird {
         this.habitats = habitats;
         this.food = food;
     }
+
 
     /*public void getHabitatIndex() {
         return habitats
@@ -52,6 +51,7 @@ public class Bird {
     public void setRequiredFood(int requiredFood) {
         this.requiredFood = requiredFood;
     }*/
+
 
     public int getEggsOnBird() {
         return eggsOnBird;
