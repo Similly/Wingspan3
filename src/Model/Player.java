@@ -5,6 +5,7 @@ import Controller.Main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import static Model.FoodTypes.*;
@@ -104,20 +105,83 @@ public class Player {
     }
     
     // lays eggs based on how many birds are in the middle habitat
-    //pick a bird to lay egg on 
     //get birds on board 
     //check available 
-    //ask user
+    //ask user to pick bird to lay egg(s) on
     //execute
     //number of eggs laying down depend on how many birds in habitats 
     //lay all eggs on one bird for now 
     public int layEggs(){
-    	int newEggs = 1;
-    	newEggs += board.birdsInGrasslands();
-    	eggCount += newEggs;
+    	
+    	//check forrest
+    	ArrayList<Bird> birdsForrest = this.availableBirds(0);
+    	//check grasslands
+    	ArrayList<Bird> birdsGrass = this.availableBirds(1);
+    	//check wetlands
+    	ArrayList<Bird> birdsWet = this.availableBirds(2);
+    	
+    	//combine all birds into one list
+    	ArrayList<Bird> allBirds = new ArrayList<>();
+    	allBirds.addAll(birdsForrest);
+    	allBirds.addAll(birdsGrass);
+    	allBirds.addAll(birdsWet);
+    	
+    	System.out.println("All Available Birds to Lay Eggs on:");
+    	for(int i =0;i<allBirds.size();i++)
+    	{
+    		System.out.println(i+1+". "+allBirds.get(i).getName()+" ");
+    	}
+    	System.out.println();
+    	System.out.println("Please Enter the Number of the Bird You Would Like to Lay Your Eggs On");
 
-    	return newEggs;
-    	//System.out.println("Your egg count has increased by " + newEggs  + "! Your new egg count is " +eggCount + "!");
+		Scanner in = new Scanner(System.in);
+		int num = in.nextInt();
+		int ID=allBirds.get(num-1).getId();
+		Bird sel=board.searchBoard(ID);
+		
+		//need to get the habitat of the bird selected so i can figure out how many eggs to lay 
+		
+    	
+    	//System.out.println(sel.getEggsOnBird());
+    	sel.setEggsOnBird(3);//this will change when figure out how to get habitat of selected bird
+    	//System.out.println(sel.getEggsOnBird());
+    	//System.out.println(sel.getName());
+    	
+    	return 0; //unsure what the function should be returning?
+    	}
+    
+    public ArrayList<Bird> availableBirds(int row)
+    { int newEggs=1;
+    	ArrayList<Bird> birds = board.getBirds(row);
+    	ArrayList<Bird> birdsFinal = new ArrayList<>(); 
+    	if(row == 0)
+    	{
+    	newEggs+=board.birdsInForrest();
+    	}
+    	else if(row==2)
+    	{
+    		newEggs+=board.birdsInGrasslands();
+    	}
+    	else {
+    		newEggs+=board.birdsInWetLands();
+    	}
+    	
+    		
+    	
+    	for(int index=0;index<(birds.size());index++)
+    	{
+    		
+    		//check if egg can be added
+    		if(birds.get(index).getMaxEggCount()>=(birds.get(index).getEggsOnBird()+newEggs))
+    		{
+    			birdsFinal.add(birds.get(index));
+    		}
+    		 
+    		
+    	}
+    	
+    	
+return birdsFinal;
     }
 
     // add a bird to the players bird arraylist

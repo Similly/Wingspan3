@@ -27,8 +27,8 @@ public class Main {
     	    	
 
         initBirds();
-        init();
-
+        //init();
+/*
         turn = 0;
         round = 0;
         while (round < 3){
@@ -37,7 +37,39 @@ public class Main {
             if(turn%amountOfPlayers == 0)
             	round++;
         }
-    	printScores();
+    	printScores();*/
+        
+        
+        /* code using to test lay eggs function
+        Player player1 = new Player(1);
+        Board board = new Board();
+    	HashMap<FoodTypes, Integer> food = new HashMap<>();
+    	food.put(FoodTypes.Seed,1);
+    	ArrayList<Habitats> hab = new ArrayList<>();
+    	hab.add(Habitats.Forrest); 
+    	Bird bird = new Bird(0,1, "exampleBird", 5, 2, food,hab);
+    	Bird bird2 = new Bird(0,2, "exampleBird2", 2, 2, food,hab);
+    	
+    	ArrayList<Habitats> hab2 = new ArrayList<>();
+    	hab2.add(Habitats.Grasslands);
+    	Bird bird3 = new Bird(0,3, "exampleBird3", 2, 2, food,hab2);
+    	
+    	
+    	    
+    	board.placeCard(0,0,bird);
+    	board.placeCard(0,1,bird2);
+    	board.placeCard(1, 0, bird3);
+    	board.display();
+    	
+    	
+    	player1.setBoard(board);
+    	
+    	player1.layEggs();
+    	
+    	
+    	*/
+    	
+    	
     }
 
     // checks the available actioncubes for a player and tells the player what options he can choose from to make a move

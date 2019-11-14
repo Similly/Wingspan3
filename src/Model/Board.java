@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 import Model.Bird;
 import View.BoardView;
 
@@ -105,5 +107,37 @@ public class Board {
 		public Bird[][] getBoard()
 		{
 			return board;
+		}
+		
+		public ArrayList<Bird> getBirds(int row)
+		{
+			ArrayList<Bird> birds=new ArrayList<>();
+			
+				for(int col=0;col<5;col++)
+				{
+					
+					if(board[row][col].getId()!=0)
+					{
+						
+					birds.add(board[row][col]);
+					}
+				}
+				
+				
+				
+			return birds;
+		}
+		
+		public Bird searchBoard(int ID)
+		{
+			for (int row = 0; row < 3; row++){
+				for (int col = 0; col < 5; col++){
+					if (board[row][col].getId()==ID){
+						return board[row][col];
+					}
+				}
+			}
+			
+			return null; 
 		}
 }

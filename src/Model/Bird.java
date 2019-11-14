@@ -36,8 +36,9 @@ public class Bird {
         this.food = food;
     }
 
-    /*public int getHabitat() {
-        return habitat;
+    /*public void getHabitatIndex() {
+        return habitats
+        		.getValue();
     }
 
     public void setHabitat(int habitat) {
@@ -91,4 +92,6 @@ public class Bird {
     public ArrayList<Habitats> getHabitats() { return habitats; }
 
     public void setHabitats(ArrayList<Habitats> habitats) { this.habitats = habitats; }
+    
+    
 }
