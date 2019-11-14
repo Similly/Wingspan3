@@ -25,7 +25,7 @@ public class Bird {
 
     public Bird(int eggsOnBird, int id, String name, int maxEggCount, int score, HashMap<FoodTypes, Integer> food, ArrayList<Habitats> habitats){
 
-        this.eggsOnBird = 0;
+        this.eggsOnBird = eggsOnBird;
         this.maxEggCount = maxEggCount;
         this.score = score;
         this.id = id;

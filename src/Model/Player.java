@@ -147,7 +147,6 @@ public class Player {
 
         availableMoves.add("2: gain food");
 
-      
         availableMoves.add("3: lay eggs");
       
 
