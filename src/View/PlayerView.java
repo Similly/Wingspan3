@@ -23,7 +23,7 @@ public class PlayerView {
     public static void printAvailableBirds(ArrayList<Bird> availableBirds){
         for (int i = 0; i < availableBirds.size(); i++){
             HashMap<FoodTypes, Integer> food = availableBirds.get(i).getFood();
-            System.out.println(i+1 + ": " + availableBirds.get(i).getName());
+            System.out.println(i+1 + ": " + availableBirds.get(i).getCardName());
             for (Map.Entry me : food.entrySet()){
                 System.out.println("    FoodType: " + me.getKey() + "; Amount: " + me.getValue());
             }
@@ -50,7 +50,7 @@ public class PlayerView {
 
     //lets the player choose a habitat to play a bird in
     public static Habitats chooseHabitat(Bird bird) {
-        System.out.println("The bird " + bird.getName() + " can be placed in the following habitats: ");
+        System.out.println("The bird " + bird.getCardName() + " can be placed in the following habitats: ");
         System.out.println(bird.getHabitats().size());
         for (Habitats habitat : bird.getHabitats()){
             System.out.println(habitat.getValue() + " " + habitat);
@@ -76,7 +76,7 @@ public class PlayerView {
     	System.out.println("All Available Birds to Lay Eggs on:");
     	for(int i =0;i<allBirds.size();i++)
     	{
-    		System.out.println(i+1+". "+allBirds.get(i).getName()+" ");
+    		System.out.println(i+1+". "+allBirds.get(i).getCardName()+" ");
     	}
     	System.out.println();
     }

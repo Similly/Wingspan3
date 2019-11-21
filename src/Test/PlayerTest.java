@@ -4,7 +4,7 @@ import Controller.Main;
 import Model.Bird;
 import Model.FoodTypes;
 import Model.Habitats;
-import Model.Player;
+import Model.WingspanPlayer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -23,7 +23,7 @@ public class PlayerTest {
 
     @Test
     public void drawBird() {
-        Player player = new Player(1);
+        WingspanPlayer player = new WingspanPlayer(1);
         int expected = 4;
 
         player.drawBird();
@@ -34,7 +34,7 @@ public class PlayerTest {
     //This test sometimes fails, because the player object is created with 3 random birds, so sometimes the start food is not enough to play any bird.
     @Test
     public void getAvailableMoves() {
-        Player player = new Player(1);
+        WingspanPlayer player = new WingspanPlayer(1);
 
         ArrayList<String> expected = new ArrayList<>();
         expected.add("1: place bird");
@@ -47,7 +47,7 @@ public class PlayerTest {
 
     @Test
     public void getAvailableBirds(){
-        Player player = new Player(1);
+        WingspanPlayer player = new WingspanPlayer(1);
         ArrayList<Bird> expectedBirds = new ArrayList<>();
         HashMap<FoodTypes, Integer> food = new HashMap<>();
         food.put(FoodTypes.Seed, 1);

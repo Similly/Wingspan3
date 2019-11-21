@@ -2,7 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 
-import Model.Bird;
 import View.BoardView;
 
 public class Board {
@@ -40,7 +39,7 @@ public class Board {
 	//output: true if not occupied
 	public boolean spacefree(int row, int col) {
 		
-		if(board[row][col].getId()==0)
+		if(board[row][col].getCardId()==0)
 			return true;
 		return false;
 	}
@@ -49,7 +48,7 @@ public class Board {
 	public boolean isEmpty() {
 		for (int row = 0; row < 3; row++){
 			for (int col = 0; col < 5; col++){
-				if (board[row][col].getId()!=0){
+				if (board[row][col].getCardId()!=0){
 					return false;
 				}
 			}
@@ -62,7 +61,7 @@ public class Board {
 		int numBirds = 0;
 		for (int row = 0; row < 3; row++){
 			for (int col = 0; col < 5; col++){
-				if (board[row][col].getId()!=0){
+				if (board[row][col].getCardId()!=0){
 					numBirds++;
 				}
 			}
@@ -76,7 +75,7 @@ public class Board {
 		int numBirds = 0;
 		for(int i =0 ; i < 5; i++)
 		{
-			if(!board[1][i].getName().equals("-"))
+			if(!board[1][i].getCardName().equals("-"))
 				numBirds++;
 		}
 		return numBirds;
@@ -88,7 +87,7 @@ public class Board {
 		int numBirds = 0;
 		for(int i =0 ; i < 5; i++)
 		{
-			if(!board[0][i].getName().equals("-"))
+			if(!board[0][i].getCardName().equals("-"))
 				numBirds++;
 		}
 		return numBirds;
@@ -99,7 +98,7 @@ public class Board {
 			int numBirds = 0;
 			for(int i =0 ; i < 5; i++)
 			{
-				if(!board[2][i].getName().equals("-"))
+				if(!board[2][i].getCardName().equals("-"))
 					numBirds++;
 			}
 			return numBirds;
@@ -118,7 +117,7 @@ public class Board {
 				for(int col=0;col<5;col++)
 				{
 					
-					if(board[row][col].getId()!=0)
+					if(board[row][col].getCardId()!=0)
 					{
 						
 					birds.add(board[row][col]);
@@ -133,7 +132,7 @@ public class Board {
 		{
 			for (int row = 0; row < 3; row++){
 				for (int col = 0; col < 5; col++){
-					if (board[row][col].getId()==ID){
+					if (board[row][col].getCardId()==ID){
 						return board[row][col];
 					}
 				}
@@ -148,7 +147,7 @@ public class Board {
 			int[] pos = new int[2];
 			for (int row = 0; row < 3; row++){
 				for (int col = 0; col < 5; col++){
-					if (board[row][col].getId()==ID){
+					if (board[row][col].getCardId()==ID){
 						pos[0]=row;
 						pos[1]=col;
 						return pos;

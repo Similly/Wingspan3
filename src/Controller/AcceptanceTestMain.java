@@ -1,6 +1,7 @@
 
 package Controller;
 
+import Model.WingspanPlayer;
 import View.MainView;
 
 
@@ -39,7 +40,7 @@ public class AcceptanceTestMain {
         System.out.println("test 0");
         
         int[] moves = {1,5,5,5};
-        Model.Player p1 = new Model.Player(1);
+        WingspanPlayer p1 = new WingspanPlayer(1);
         Controller.Main.testTurn(p1, moves);
         
         System.out.println("The expected out put is: ");
@@ -54,7 +55,7 @@ public class AcceptanceTestMain {
         System.out.println("test 1");
         
         int [] moves = {2};
-        Model.Player p1 = new Model.Player(1);
+        WingspanPlayer p1 = new WingspanPlayer(1);
         p1.testClearFood();
 		p1.testClearBirdStack();
 		p1.testAddBird(Main.testDrawBird(1));

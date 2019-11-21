@@ -18,7 +18,7 @@ import org.json.simple.parser.ParseException;
 public class Main {
 
     private static int amountOfPlayers;
-    private static Player[] players;
+    private static WingspanPlayer[] players;
     private static Dice dice;
     private static int turn, round;
     private static ArrayList<Bird> birdStack = new ArrayList<>();
@@ -73,7 +73,7 @@ public class Main {
     }
 
     // checks the available actioncubes for a player and tells the player what options he can choose from to make a move
-    private static void turn(Player player) {
+    private static void turn(WingspanPlayer player) {
         player.setActionCubes(8);
         while (player.getActionCubes() > 0){
             ArrayList<String> availableMoves = player.getAvailableMoves();
@@ -126,10 +126,10 @@ public class Main {
     		System.out.println("Acceptance test over");
     		System.exit(0);
     	}
-        players = new Player[amountOfPlayers];
+        players = new WingspanPlayer[amountOfPlayers];
 
         for (int i = 0 ; i < players.length ; i++) {
-            players[i] = new Player(i+1);
+            players[i] = new WingspanPlayer(i+1);
         }
 
         dice = new Dice();
@@ -226,7 +226,7 @@ public class Main {
     private static void printScores()
     {
     	int i = 1;
-    	for(Player p : players)
+    	for(WingspanPlayer p : players)
     	{
     		System.out.println("player " + i + " score is " + p.getScore());
     		i++;
@@ -234,7 +234,7 @@ public class Main {
     }
  // functions for Acceptance testing.
     //
-    public static void testTurn(Player player, int[] input)
+    public static void testTurn(WingspanPlayer player, int[] input)
     {
     	for(int i = 0; i < 4; i++ )
     	{

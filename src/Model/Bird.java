@@ -1,35 +1,31 @@
 package Model;
 
 
+import GameFramework.Card;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /* A bird has 5 fields.
  * An Id, a name, a habitat, the required food to play it and the amount of eggs on the bird.
  */
-public class Bird {
+public class Bird extends Card {
 
-    private int id;
-    private String name;
     private int eggsOnBird;
     private int maxEggCount;
-    private int score;
     private HashMap<FoodTypes, Integer> food;
     private ArrayList<Habitats> habitats;
     
     public Bird()
     {
-    	id=0;
-    	name="-";
+    	super();
     }
 
     public Bird(int eggsOnBird, int id, String name, int maxEggCount, int score, HashMap<FoodTypes, Integer> food, ArrayList<Habitats> habitats){
 
+        super(id, name, score);
         this.eggsOnBird = eggsOnBird;
         this.maxEggCount = maxEggCount;
-        this.score = score;
-        this.id = id;
-        this.name = name;
         this.habitats = habitats;
         this.food = food;
     }
@@ -61,29 +57,29 @@ public class Bird {
         this.eggsOnBird = eggsOnBird;
     }
 
-    public int getId() {
-        return id;
+    public int getCardId() {
+        return getId();
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCardId(int id) {
+        setId(id);
     }
 
-    public String getName() {
-        return name;
+    public String getCardName() {
+        return getName();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCardName(String name) {
+        setName(name);
     }
 
     public int getMaxEggCount() { return maxEggCount; }
 
     public void setMaxEggCount(int maxEggCount) { this.maxEggCount = maxEggCount; }
 
-    public int getScore() { return score; }
+    public int getCardScore() { return getScore(); }
 
-    public void setScore(int score) { this.score = score; }
+    public void setCardScore(int score) { setScore(score); }
 
     public HashMap<FoodTypes, Integer> getFood() { return food; }
 

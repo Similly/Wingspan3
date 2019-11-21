@@ -12,7 +12,7 @@ public class BoardView {
 			for(int col=0;col<5;col++)
 			{
 				
-				String name = board.getBoard()[row][col].getName();
+				String name = board.getBoard()[row][col].getCardName();
 				System.out.printf("%1.1s %12.12s", "|", name);
 				
 			}

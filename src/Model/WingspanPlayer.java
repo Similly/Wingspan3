@@ -1,20 +1,15 @@
 package Model;
 
 import Controller.Main;
+import GameFramework.Player;
 import View.PlayerView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import java.util.Map.Entry;
-import java.util.Scanner;
+public class WingspanPlayer extends Player {
 
-import static Model.FoodTypes.*;
-
-public class Player {
-
-    private int id;
     private int eggCount;
     private int actionCubes;
     private ArrayList<Bird> birds;
@@ -22,8 +17,8 @@ public class Player {
     private Dice dice;
     private HashMap<FoodTypes, Integer> food;
 
-    public Player(int id){
-        this.id = id;
+    public WingspanPlayer(int id){
+        super(id);
         this.eggCount = 0;
         this.actionCubes = 8;
         birds = new ArrayList<>();
@@ -123,7 +118,7 @@ public class Player {
     	PlayerView.printLayEggBirds(allBirds);
     	
     	int num=PlayerView.selectBird();
-		int ID=allBirds.get(num-1).getId();
+		int ID=allBirds.get(num-1).getCardId();
 		Bird sel=board.searchBoard(ID);
 
 		int addEggs = 1;
@@ -135,7 +130,7 @@ public class Player {
     	sel.setEggsOnBird(addEggs);
     	
     	//update the board with updated Bird object
-    	int[] pos=board.findPos(sel.getId()); 
+    	int[] pos=board.findPos(sel.getCardId());
     	
     	int row=pos[0];
     	int col=pos[1];
@@ -235,17 +230,9 @@ public class Player {
         int birdScore = 0;
 
         for (Bird bird : birdsOnBoard){
-            birdScore += bird.getScore();
+            birdScore += bird.getCardScore();
         }
         return eggCount + birdScore;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public int getEggCount() {
