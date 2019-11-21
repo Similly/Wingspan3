@@ -1,0 +1,13 @@
+New Functionality:
+  - check if lay eggs move is available
+  
+Acceptance Test:
+  - some more
+  
+Framework:
+  - Create generalized classes for Card, Player, Dice, Board
+  - Implement Monopoly(very basic just board and money)
+  
+AI Player:
+  - stupid AI:random moves
+  - smart AI:priotity list(1. play bird, 2. lay eggs, 3. (if bird on hand --> gain food -- else --> draw card))
