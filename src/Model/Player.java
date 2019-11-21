@@ -204,6 +204,7 @@ public class Player {
 
         availableMoves.add("2: gain food");
 
+        //TODO check if move is available
         availableMoves.add("3: lay eggs");
       
 
