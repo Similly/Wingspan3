@@ -205,8 +205,22 @@ public class Player {
         availableMoves.add("2: gain food");
 
         //TODO check if move is available
-        availableMoves.add("3: lay eggs");
-      
+        //check forrest
+        ArrayList<Bird> birdsForrest = this.availableBirds(0);
+        //check grasslands
+        ArrayList<Bird> birdsGrass = this.availableBirds(1);
+        //check wetlands
+        ArrayList<Bird> birdsWet = this.availableBirds(2);
+
+        //combine all birds into one list
+        ArrayList<Bird> allBirds = new ArrayList<>();
+        allBirds.addAll(birdsForrest);
+        allBirds.addAll(birdsGrass);
+        allBirds.addAll(birdsWet);
+
+        if (!allBirds.isEmpty()){
+            availableMoves.add("3: lay eggs");
+        }
 
         availableMoves.add("4: draw bird card");
         return availableMoves;
