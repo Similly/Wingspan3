@@ -1,5 +1,5 @@
 New Functionality:
-  - check if lay eggs move is available
+  - check if lay eggs move is available (DONE)
   
 Acceptance Test:
   - some more
@@ -7,6 +7,7 @@ Acceptance Test:
 Framework:
   - Create generalized classes for Card, Player, Dice, Board
   - Implement Monopoly(very basic just board and money)
+  - Check this for questions: https://stackoverflow.com/questions/15549775/using-a-private-variable-in-a-inherited-class-java
   
 AI Player:
   - stupid AI:random moves
