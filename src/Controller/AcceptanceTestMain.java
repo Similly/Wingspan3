@@ -12,6 +12,8 @@ public class AcceptanceTestMain {
     	 System.out.println("Enter the number of the test you want to run");
     	 System.out.println("Test 0: 1 player, plays a bird turn 1 then skips the rest of his turns");
     	 System.out.println("Test 1: 1 player, gains food then plays a bird he could not play before");
+    	 System.out.println("Test 2: 1 player, plays a bird that is worth 6 points lays 1 egg \n"
+    	 		+ "		  for 1 point then ends game and prints score");
     	 int testID = MainView.getInt(); 
         switch (testID){
             case 0:
@@ -71,6 +73,19 @@ public class AcceptanceTestMain {
 
     private static void acceptanceTest2() {
         System.out.println("test 2");
+        int [] moves = {3};
+        WingspanPlayer p1 = new WingspanPlayer(1);
+        p1.testClearBirdStack();
+		p1.testAddBird(Main.testDrawBird(1));
+		p1.testAddBird(Main.testDrawBird(2));
+		p1.testAddBird(Main.testDrawBird(3));
+		
+		Controller.Main.testTurn(p1, moves);
+		
+        System.out.println("\nThe expected out put is:");
+        System.out.println("The player lays 1 egg and has a total of 1");
+        System.out.println("\nThe players score is 7");
+        
     }
 
     private static void acceptanceTest3() {

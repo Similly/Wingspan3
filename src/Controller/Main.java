@@ -256,12 +256,23 @@ public class Main {
     				PlayerView.printAvailableBirds(availableBirds);
     				return;
     			case 3:
-    				break;
+    				
+                    //Habitats habitat = Habitats.Grasslands;
+    				player.playBird(player.getBirds().get(1), Habitats.Forrest);
+                    int totalEggCount = player.getEggCount() +1;
+                    int newEggs = 1;
+                    player.setEggCount(totalEggCount);
+                    System.out.println("You layed " + newEggs + " eggs Your total number of eggs is " + totalEggCount);
+                    System.out.println("player 1 score is " + player.getScore());
+                    //printScores();
+                    return;
+    				
     			case 4:
     				break;
     			case 5:
     				break;
     		}
+   
     		player.getBoard().display();
     			
     	}
