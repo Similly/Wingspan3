@@ -37,7 +37,7 @@ public class Main {
             if(turn%amountOfPlayers == 0)
             	round++;
         }
-    	printScores();
+    	MainView.printScores(players);
         
         
         /* code using to test lay eggs function
@@ -222,16 +222,6 @@ public class Main {
         return birdStack.get(i);
     }
     
-    // prints the scores of all the players and says who the winner is
-    private static void printScores()
-    {
-    	int i = 1;
-    	for(WingspanPlayer p : players)
-    	{
-    		System.out.println("player " + i + " score is " + p.getScore());
-    		i++;
-    	}
-    }
  // functions for Acceptance testing.
     //
     public static void testTurn(WingspanPlayer player, int[] input)

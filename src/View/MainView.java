@@ -3,6 +3,8 @@ package View;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Model.WingspanPlayer;
+
 public class MainView {
 	// welcome message
 	public static void welcomeMessage() 
@@ -37,5 +39,14 @@ public class MainView {
         System.out.println("5: End turn");
         System.out.println("\nChoose one of the available moves by typing its number!");
 	}
- 
+	// prints the players scores
+	public static void printScores(WingspanPlayer[] players)
+	{
+		int i = 1;
+    	for(WingspanPlayer p : players)
+    	{
+    		System.out.println("player " + i + " score is " + p.getScore());
+    		i++;
+    	}
+	}
 }

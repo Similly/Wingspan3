@@ -41,7 +41,6 @@ public class AcceptanceTestMain {
                 break;
         }
     }
-
     private static void acceptanceTest0() {
         System.out.println("test 0");
         
@@ -56,15 +55,16 @@ public class AcceptanceTestMain {
         System.out.println("|            -|            -|            -|            -|            -|");
         
     }
-
+ // the player should not be able to play birds at first 
+ // the player should then gain food and gain the ability to play birds
     private static void acceptanceTest1() {
         System.out.println("test 1");
         
         int [] moves = {2};
         WingspanPlayer p1 = new WingspanPlayer(1);
-        p1.testClearFood();
-		p1.testClearBirdStack();
-		p1.testAddBird(Main.testDrawBird(1));
+        p1.testClearFood(); // clearing food so that no birds can be played
+		p1.testClearBirdStack(); // clearing the random birds we start with
+		p1.testAddBird(Main.testDrawBird(1)); // adding specific birds the players hand for testing
 		p1.testAddBird(Main.testDrawBird(2));
 		
         Controller.Main.testTurn(p1, moves);
@@ -79,9 +79,9 @@ public class AcceptanceTestMain {
         System.out.println("test 2");
         int [] moves = {3};
         WingspanPlayer p1 = new WingspanPlayer(1);
-        p1.testClearBirdStack();
-		p1.testAddBird(Main.testDrawBird(1));
-		p1.testAddBird(Main.testDrawBird(2));
+        p1.testClearBirdStack(); // clear out random birds from stack
+		p1.testAddBird(Main.testDrawBird(1)); // add specific birds that can lay eggs
+		p1.testAddBird(Main.testDrawBird(2)); // and or be played with starting food
 		p1.testAddBird(Main.testDrawBird(3));
 		
 		Controller.Main.testTurn(p1, moves);
@@ -99,16 +99,17 @@ public class AcceptanceTestMain {
         WingspanPlayer p2 = new WingspanPlayer(2);
         WingspanPlayer p3 = new WingspanPlayer(3);
         WingspanPlayer p4 = new WingspanPlayer(4);
+        // clear the random birds
         p1.testClearBirdStack();
         p2.testClearBirdStack();
         p3.testClearBirdStack();
         p4.testClearBirdStack();
-        
+        // add specific birds to the players hands
         p1.testAddBird(Main.testDrawBird(1));
 		p2.testAddBird(Main.testDrawBird(2));
 		p3.testAddBird(Main.testDrawBird(3));
 		p4.testAddBird(Main.testDrawBird(4));
-		
+		// plays each players bird then prints board and score
 		Controller.Main.testTurn(p1,moves);
 		Controller.Main.testTurn(p2,moves);
 		Controller.Main.testTurn(p3, moves);
