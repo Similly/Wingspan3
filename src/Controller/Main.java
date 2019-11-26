@@ -257,23 +257,26 @@ public class Main {
     				return;
     			case 3:
     				
-                    //Habitats habitat = Habitats.Grasslands;
     				player.playBird(player.getBirds().get(1), Habitats.Forrest);
                     int totalEggCount = player.getEggCount() +1;
                     int newEggs = 1;
                     player.setEggCount(totalEggCount);
                     System.out.println("You layed " + newEggs + " eggs Your total number of eggs is " + totalEggCount);
                     System.out.println("player 1 score is " + player.getScore());
-                    //printScores();
                     return;
     				
     			case 4:
+    				player.playBird(player.getBirds().get(0), Habitats.Forrest);
+    				System.out.println("player "+player.getId()+ " score is " + player.getScore());
     				break;
+    				
     			case 5:
+    				player.getBoard().display();
     				break;
+    			case 6: // lets us end the test early
+    				return;
     		}
    
-    		player.getBoard().display();
     			
     	}
     }
