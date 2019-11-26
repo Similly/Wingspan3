@@ -230,12 +230,13 @@ public class Main {
     	{
     		switch(input[i])
     		{   
-    			case 1:
+    			case 1: // just plays a bird
                     Bird bird = testDrawBird(1);
                     Habitats habitat = Habitats.Grasslands;
                     player.playBird(bird, habitat);
     				break;
-    			case 2:
+    			case 2: // tries to print out available birds but cannot due to lack of food
+    					// gains food and is then able to print the birds
     				System.out.println("printing available birds:");
     				ArrayList<Bird> availableBirds = player.getAvailableBirds();
     				PlayerView.printAvailableBirds(availableBirds);
@@ -265,6 +266,7 @@ public class Main {
     				break;
     			case 6: // lets us end the test early
     				return;
+    				
     		}
    
     			

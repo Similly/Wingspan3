@@ -1,8 +1,6 @@
 
 package Controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import Model.WingspanPlayer;
 import View.MainView;
@@ -140,5 +138,6 @@ public class AcceptanceTestMain {
 
     private static void acceptanceTest4() {
         System.out.println("test 4");
+        
     }
 }
