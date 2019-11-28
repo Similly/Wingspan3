@@ -3,19 +3,27 @@ package Model;
 import java.util.ArrayList;
 
 import View.BoardView;
+import GameFramework.BoardGeneric;
+import java.util.HashMap;
 
-public class Board {
+public class Board extends BoardGeneric {
+	
 	private Bird[][] board;
 	private Bird bird=new Bird();
 	
 	//Constructor for Board
 	public Board() {
-	board = new Bird[3][5];
+		super();
+	}
+	
+	public Board(int width, int height, String name) {
+		super(width, height, name);
+	board = new Bird[height][width];//3,5
 	
 	//initialize board 
-	for(int row=0;row<3;row++)
+	for(int row=0;row<height;row++)
 	{
-		for(int col=0;col<5;col++)
+		for(int col=0;col<width;col++)
 		{
 			board[row][col]=bird; 
 		}
