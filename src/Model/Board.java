@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import View.BoardView;
 import GameFramework.BoardGeneric;
+import GameFramework.Card;
 import java.util.HashMap;
 
 public class Board extends BoardGeneric {
@@ -30,10 +31,37 @@ public class Board extends BoardGeneric {
 	}
 	}
 	
+	public int getBoardWidth() {
+        return getWidth();
+    }
+
+    public void setBoardWidth(int w) {
+        setWidth(w);
+    }
+
+    public String getBoardName() {
+        return getName();
+    }
+
+    public void setBoardName(String name) {
+        setName(name);
+    }
+    
+    public void setBoardHeight(int h)
+    {
+    	setHeight(h);
+    }
+    
+    public int getBoardHeight()
+    {
+    	return getHeight(); 
+    }
+	
 	//print out the board 
 	public void display () {
 		
 		BoardView.displayBoard(this);
+		
 				
     }
 	
@@ -54,8 +82,8 @@ public class Board extends BoardGeneric {
 
 //checks to see if the board is empty 
 	public boolean isEmpty() {
-		for (int row = 0; row < 3; row++){
-			for (int col = 0; col < 5; col++){
+		for (int row = 0; row < height; row++){
+			for (int col = 0; col < width; col++){
 				if (board[row][col].getCardId()!=0){
 					return false;
 				}
@@ -67,8 +95,8 @@ public class Board extends BoardGeneric {
 	public int numBirdsOnBoard()
 	{
 		int numBirds = 0;
-		for (int row = 0; row < 3; row++){
-			for (int col = 0; col < 5; col++){
+		for (int row = 0; row < height; row++){
+			for (int col = 0; col < width; col++){
 				if (board[row][col].getCardId()!=0){
 					numBirds++;
 				}
@@ -81,7 +109,7 @@ public class Board extends BoardGeneric {
 	public int birdsInGrasslands()
 	{
 		int numBirds = 0;
-		for(int i =0 ; i < 5; i++)
+		for(int i =0 ; i < width; i++)
 		{
 			if(!board[1][i].getCardName().equals("-"))
 				numBirds++;
@@ -93,7 +121,7 @@ public class Board extends BoardGeneric {
 	public int birdsInForrest()
 	{
 		int numBirds = 0;
-		for(int i =0 ; i < 5; i++)
+		for(int i =0 ; i < width; i++)
 		{
 			if(!board[0][i].getCardName().equals("-"))
 				numBirds++;
@@ -104,7 +132,7 @@ public class Board extends BoardGeneric {
 		public int birdsInWetLands()
 		{
 			int numBirds = 0;
-			for(int i =0 ; i < 5; i++)
+			for(int i =0 ; i < width; i++)
 			{
 				if(!board[2][i].getCardName().equals("-"))
 					numBirds++;
@@ -122,7 +150,7 @@ public class Board extends BoardGeneric {
 		{
 			ArrayList<Bird> birds=new ArrayList<>();
 			
-				for(int col=0;col<5;col++)
+				for(int col=0;col<width;col++)
 				{
 					
 					if(board[row][col].getCardId()!=0)
@@ -138,8 +166,8 @@ public class Board extends BoardGeneric {
 		//returns a Bird with specified ID
 		public Bird searchBoard(int ID)
 		{
-			for (int row = 0; row < 3; row++){
-				for (int col = 0; col < 5; col++){
+			for (int row = 0; row < height; row++){
+				for (int col = 0; col < width; col++){
 					if (board[row][col].getCardId()==ID){
 						return board[row][col];
 					}
@@ -153,8 +181,8 @@ public class Board extends BoardGeneric {
 		public int[] findPos(int ID)
 		{
 			int[] pos = new int[2];
-			for (int row = 0; row < 3; row++){
-				for (int col = 0; col < 5; col++){
+			for (int row = 0; row < height; row++){
+				for (int col = 0; col < width; col++){
 					if (board[row][col].getCardId()==ID){
 						pos[0]=row;
 						pos[1]=col;

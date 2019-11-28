@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class BoardGeneric {
 	
-	private int width; 
-	private int height; 
+	protected int width; 
+	protected int height; 
 	private String name;
 	
 	public BoardGeneric() {
@@ -14,10 +14,11 @@ public class BoardGeneric {
 		name="";
 	}
 	
-	public BoardGeneric(int w, int h,String n) {
+	public BoardGeneric(int w, int h, String n) {
 		this.height=h; 
 		this.width=w;
 		this.name=n;
+		
 		
 	}
 	
@@ -56,7 +57,7 @@ public class BoardGeneric {
 
     @Override
     public int hashCode() {
-        return Objects.hash(width, height,name);
+        return Objects.hash(width, height, name);
     }
 
     @Override
