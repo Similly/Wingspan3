@@ -25,7 +25,7 @@ public class WingspanPlayer extends Player {
         for (int i = 0; i < 3; i++){
             birds.add(Main.drawBirdFromStack());
         }
-        this.board = new Board(5,3,"wingspan");
+        this.board = new Board("wingspan");
         this.dice = new Dice();
         this.food = new HashMap<>();
         this.food.put(FoodTypes.None, 1);

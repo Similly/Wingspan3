@@ -39,10 +39,10 @@ public class Main {
         }
     	MainView.printScores(players);
         
-        
-        /* code using to test lay eggs function
-        Player player1 = new Player(1);
-        Board board = new Board();
+        /*
+        // code using to test lay eggs function
+        WingspanPlayer player1 = new WingspanPlayer(1);
+        Board board = new Board(5,3,"wingspan");
     	HashMap<FoodTypes, Integer> food = new HashMap<>();
     	food.put(FoodTypes.Seed,1);
     	ArrayList<Habitats> hab = new ArrayList<>();
@@ -64,10 +64,11 @@ public class Main {
     	
     	player1.setBoard(board);
     	
-    	player1.layEggs();
+    	boolean empty=board.isEmpty();
+    	System.out.print(empty);*/
     	
     	
-    	*/
+    
     	
     	
     }

@@ -11,14 +11,16 @@ public class Board extends BoardGeneric {
 	
 	private Bird[][] board;
 	private Bird bird=new Bird();
+	private int width=5; 
+	private int height=3;
 	
 	//Constructor for Board
 	public Board() {
 		super();
 	}
 	
-	public Board(int width, int height, String name) {
-		super(width, height, name);
+	public Board(String name) {
+		super(getWidth(), getHeight(), name);
 	board = new Bird[height][width];//3,5
 	
 	//initialize board 
@@ -33,11 +35,7 @@ public class Board extends BoardGeneric {
 	
 	public int getBoardWidth() {
         return getWidth();
-    }
-
-    public void setBoardWidth(int w) {
-        setWidth(w);
-    }
+    }    
 
     public String getBoardName() {
         return getName();
@@ -45,12 +43,7 @@ public class Board extends BoardGeneric {
 
     public void setBoardName(String name) {
         setName(name);
-    }
-    
-    public void setBoardHeight(int h)
-    {
-    	setHeight(h);
-    }
+    }   
     
     public int getBoardHeight()
     {
@@ -76,33 +69,37 @@ public class Board extends BoardGeneric {
 	public boolean spacefree(int row, int col) {
 		
 		if(board[row][col].getCardId()==0)
-			return true;
-		return false;
+  			return true;
+  		return false;
+		
+		//return spacefree(row,col);
 	}
 
 //checks to see if the board is empty 
 	public boolean isEmpty() {
 		for (int row = 0; row < height; row++){
-			for (int col = 0; col < width; col++){
-				if (board[row][col].getCardId()!=0){
-					return false;
-				}
-			}
-		}
-		return true;
+  			for (int col = 0; col < width; col++){
+  				if (board[row][col].getCardId()!=0){
+  					return false;
+  				}
+  			}
+  		}
+  		return true;
+		//return isEmpty();
 	}
 	// returns the number of birds currently on the board
 	public int numBirdsOnBoard()
 	{
-		int numBirds = 0;
-		for (int row = 0; row < height; row++){
-			for (int col = 0; col < width; col++){
-				if (board[row][col].getCardId()!=0){
-					numBirds++;
-				}
-			}
-		}
-		return numBirds;
+		int numCards = 0;
+  		for (int row = 0; row < height; row++){
+  			for (int col = 0; col < width; col++){
+  				if (board[row][col].getCardId()!=0){
+  					numCards++;
+  				}
+  			}
+  		}
+  		return numCards;
+		//return numCardsOnBoard();
 	}
 
 	// returns the number of birds currently on the grasslands section of the board
