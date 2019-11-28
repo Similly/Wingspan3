@@ -17,8 +17,7 @@ public class BoardGeneric {
 	public BoardGeneric(int w, int h, String n) {
 		this.height=h; 
 		this.width=w;
-		this.name=n;
-		
+		this.name=n;		
 		
 	}
 	
