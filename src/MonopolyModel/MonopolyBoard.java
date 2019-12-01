@@ -64,5 +64,23 @@ public class MonopolyBoard extends BoardGeneric {
 		}
 		System.out.println();
     }
+    
+  //place a card on the board in specified row and col 
+  	public void placeCard(int row, int col, Card c)
+  	{
+  		board[row][col]=c;
+  	}
+  	
+  	//input:the row and col player would like to check if space is occupied
+  	//output: true if not occupied
+  	public boolean spacefree(int row, int col) {
+  		
+  		if(board[row][col].getId()==0)
+    			return true;
+    		return false;
+  		
+  		
+  	}
+
 
 }
