@@ -3,13 +3,15 @@ package MonopolyModel;
 import GameFramework.Card;
 
 public class MonopolyCard extends Card {
+	private String color;
 	
 	public MonopolyCard() {
 		super();
 	}
 	
-	public MonopolyCard(int id,String name, int score) {
+	public MonopolyCard(int id,String name, int score, String c) {
 		super(id,name,score);
+		this.color=c;
 	}
 
 	public int getCardId() {
