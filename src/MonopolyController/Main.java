@@ -26,6 +26,8 @@ public class Main {
 	private int width,height=11;
 	private static  int amountOfPlayers;
 	private static MonopolyPlayer[] players;
+    private static Dice dice;
+
 	
 	public static void main(String[] args){
 		
@@ -43,6 +45,8 @@ public class Main {
             players[i] = new MonopolyPlayer(i+1);
         }
 	
+        //creates dice obj
+        dice=new Dice();
         //displays monopoly board
 		board.display();
 		
