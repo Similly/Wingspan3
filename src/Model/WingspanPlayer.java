@@ -10,12 +10,12 @@ import java.util.Map;
 
 public class WingspanPlayer extends Player {
 
-    private int eggCount;
-    private int actionCubes;
-    private ArrayList<Bird> birds;
-    private Board board;
-    private Dice dice;
-    private HashMap<FoodTypes, Integer> food;
+    protected int eggCount;
+    protected int actionCubes;
+    protected ArrayList<Bird> birds;
+    protected Board board;
+    protected Dice dice;
+    protected HashMap<FoodTypes, Integer> food;
 
     public WingspanPlayer(int id){
         super(id);
@@ -139,22 +139,7 @@ public class WingspanPlayer extends Player {
     	
     	return addEggs; 
     }
-    // Directly add eggs to a bird
-    // needed this for AI
-    public void addEggs(int id) 
-    {
-    	Bird sel=board.searchBoard(id);
-    	int addEggs = 1;
-		addEggs += board.birdsInGrasslands();
-		eggCount = eggCount+addEggs; //update the egg count of the player
-    	sel.setEggsOnBird(addEggs);
-    	//update the board with updated Bird object
-    	int[] pos=board.findPos(sel.getCardId());
-    	int row=pos[0];
-    	int col=pos[1];
-    	board.placeCard(row, col, sel);
-    	
-    }
+   
     // returns all birds that can lay eggs
     public ArrayList<Bird> getBirdsCanLayEggs()
     {

@@ -22,8 +22,7 @@ public class Main {
     private static Dice dice;
     private static int turn, round;
     private static ArrayList<Bird> birdStack = new ArrayList<>();
-    private static boolean turnSkipped = false; // to tell if the AI skipped its turn
-
+    
     public static void main(String[] args){
     	    	
 
@@ -80,21 +79,12 @@ public class Main {
         while (player.getActionCubes() > 0){
         	if(player.getId() == 5)
         	{
-        		AI(player);
+        		smartAI((SmartAI)player);
         	}
         	else if (player.getId() == 6)
-        	{
-        		dumbAI(player);
-        		/*// This makes the AI Skip his whole turn instead of just using 1 of his 8 action cubes to skip
-        		  // I think this makes it too easy so I commented it out.
-        		  // but i'm leaving this comment in just in case we decided we want to use it later
-        		if(turnSkipped) 
-        		{
-        			player.getBoard().display();
-                    player.setActionCubes(player.getActionCubes()-1);
-                    turnSkipped = false;
-                    return;
-        		}*/
+        	{	
+        		dumbAI((DumbAI)player);
+        		
         	}
         	else {
 	            ArrayList<String> availableMoves = player.getAvailableMoves();
@@ -136,93 +126,21 @@ public class Main {
             player.setActionCubes(player.getActionCubes()-1);
         }
     }
-    // This AI is not good at the game at the moment.
-    // A start to the AI
-    // It will always play a bird if it can
-    // if it has a bird but not enough food it will gain food until it can play it
-    // if the board is not full and its out of birds it will draw birds.
-    // if the board is full of birds it will then lay eggs.
-    private static void AI(WingspanPlayer player)
-    {
-    	ArrayList<String> availableMoves = player.getAvailableMoves();
-        MainView.playerTurn(player.getId());
+    
+    private static void smartAI(SmartAI player)
+    {	
+    	MainView.playerTurn(player.getId());
         player.getBoard().display();
         MainView.actionCubes(player.getActionCubes());
-        MainView.availableMoves(availableMoves);
-        
-        ArrayList<Bird> availableBirds = player.getAvailableBirds();
-        // play birds if we can
-       if(availableBirds.size() >0)
-       {
-    	   Bird bird = availableBirds.get(0); // might want to change the way this works later
-    	   Habitats habitat  = bird.getHabitats().get(0);
-    	   player.playBird(bird, habitat);
-    	   return;
-       }
-       // we have birds but not enough food. gain food.
-       if(player.getNumBirds() > 0)
-       {
-    	   MainView.AIMoves(2);
-    	   player.gainFood();
-    	   return;
-       }// if there is room on the board for more birds, get more birds!
-       if(player.getNumBirds() == 0 && !player.getBoard().isFull())
-       {
-    	   MainView.AIMoves(4);
-    	   player.drawBird();
-    	   return;
-       }
-       
-       // lay the eggs
-       // TODO make it automatically pick a bird to lay eggs on
-       ArrayList<Bird> allBirds = player.getBirdsCanLayEggs();
-       if (!allBirds.isEmpty()){
-    	   MainView.AIMoves(3);
-           int id = allBirds.get(0).getId();
-           player.addEggs(id);
-       }
-        
+        player.playTurn();
     }
     // AI that randomly picks its moves
-    public static void dumbAI(WingspanPlayer player) 
+    public static void dumbAI(DumbAI player) 
     {
-    	ArrayList<String> availableMoves = player.getAvailableMoves();
-    	availableMoves.add("5: skip turn");
-    	Random rand = new Random();
-    	int index = rand.nextInt(availableMoves.size());
-    	String move = availableMoves.get(index);
-    	switch(move)
-    	{
-    		case "1: place bird":
-    			   MainView.AIMoves(1);
-    			   ArrayList<Bird> availableBirds = player.getAvailableBirds();
-    			   Bird bird = availableBirds.get(0); 
-    	    	   Habitats habitat  = bird.getHabitats().get(0);
-    	    	   player.playBird(bird, habitat);
-    	    	   return;
-    		
-    		case "2: gain food":
-    			   MainView.AIMoves(2);
-    	    	   player.gainFood();
-    	    	   return;
-    		case "3: lay eggs":
-    			
-    			   MainView.AIMoves(3);
-    			   ArrayList<Bird> allBirds = player.getBirdsCanLayEggs();
-    			   int id = allBirds.get(0).getId();
-    	           player.addEggs(id);
-    	           return;
-    		case "4: draw bird card":
-    			   MainView.AIMoves(4);
-    	    	   player.drawBird();
-    	    	   return;
-    		case "5: skip turn":
-    			   MainView.AIMoves(5);
-    			   turnSkipped = true;
-    			   return;
-    		
-    	}
-    	return;
+    	MainView.playerTurn(player.getId());
+        player.getBoard().display();
+        MainView.actionCubes(player.getActionCubes());
+    	player.playTurn();
     }
     // initializes the game for the given amount of player
     private static void init(){
@@ -236,21 +154,21 @@ public class Main {
     		System.out.println("Acceptance test over");
     		System.exit(0);
     	}
-    	// playing vs AI
+    	// playing vs SmartAI
     	if(amountOfPlayers == 6)
     	{
     		players = new WingspanPlayer[2];
     		players[0] = new WingspanPlayer(1);
-    		players[1] = new WingspanPlayer(5); // 5 for AI.
+    		players[1] = new SmartAI(5); // 5 for AI.
     		// reset to real # of players
     		amountOfPlayers = 2;
     		
-    	}
+    	} // dumbAI
     	else if(amountOfPlayers == 7)
     	{
     		players = new WingspanPlayer[2];
     		players[0] = new WingspanPlayer(1);
-    		players[1] = new WingspanPlayer(6); // 6 for easy AI.
+    		players[1] = new DumbAI(6); // 6 for easy AI.
     		// reset to real # of players
     		amountOfPlayers = 2;
     		
