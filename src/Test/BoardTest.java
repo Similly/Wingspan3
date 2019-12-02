@@ -19,19 +19,21 @@ public class BoardTest {
 
     @Test
     public void spaceFree() {
-    	Board board=new Board(); 
+    	Board board=new Board("wingspan"); 
     	assertTrue(board.spacefree(0,0));
     }
 
     @Test
     public void isEmpty() {
-    	Board board=new Board(); 
+    	Board board=new Board("wingspan"); 
+
     	assertTrue(board.isEmpty());
     }
 
     @Test
     public void numBirdsOnBoard() {
-    	Board board=new Board(); 
+    	Board board=new Board("wingspan"); 
+
     	HashMap<FoodTypes, Integer> food = new HashMap<>();
     	food.put(FoodTypes.Seed,1);
     	ArrayList<Habitats> hab = new ArrayList<>();
@@ -46,7 +48,8 @@ public class BoardTest {
     @Test
     public void birdsInGrassLands()
     {
-    	Board board=new Board(); 
+    	Board board=new Board("wingspan"); 
+
     	HashMap<FoodTypes, Integer> food = new HashMap<>();
     	food.put(FoodTypes.Seed,1);
     	ArrayList<Habitats> hab = new ArrayList<>();
@@ -60,7 +63,8 @@ public class BoardTest {
     @Test
     public void birdsInForrest()
     {
-    	Board board=new Board(); 
+    	Board board=new Board("wingspan"); 
+ 
     	HashMap<FoodTypes, Integer> food = new HashMap<>();
     	food.put(FoodTypes.Seed,1);
     	ArrayList<Habitats> hab = new ArrayList<>();
@@ -74,7 +78,8 @@ public class BoardTest {
     @Test
     public void birdsInWetLands()
     {
-    	Board board=new Board(); 
+    	Board board=new Board("wingspan"); 
+
     	HashMap<FoodTypes, Integer> food = new HashMap<>();
     	food.put(FoodTypes.Seed,1);
     	ArrayList<Habitats> hab = new ArrayList<>();
@@ -89,7 +94,8 @@ public class BoardTest {
     @Test 
     public void findPos()
     {
-    	Board board=new Board(); 
+    	Board board=new Board("wingspan"); 
+
     	HashMap<FoodTypes, Integer> food = new HashMap<>();
     	food.put(FoodTypes.Seed,1);
     	ArrayList<Habitats> hab = new ArrayList<>();
