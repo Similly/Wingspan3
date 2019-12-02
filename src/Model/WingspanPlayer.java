@@ -139,8 +139,37 @@ public class WingspanPlayer extends Player {
     	
     	return addEggs; 
     }
-    
-    
+    // Directly add eggs to a bird
+    // needed this for AI
+    public void addEggs(int id) 
+    {
+    	Bird sel=board.searchBoard(id);
+    	int addEggs = 1;
+		addEggs += board.birdsInGrasslands();
+		eggCount = eggCount+addEggs; //update the egg count of the player
+    	sel.setEggsOnBird(addEggs);
+    	//update the board with updated Bird object
+    	int[] pos=board.findPos(sel.getCardId());
+    	int row=pos[0];
+    	int col=pos[1];
+    	board.placeCard(row, col, sel);
+    	
+    }
+    // returns all birds that can lay eggs
+    public ArrayList<Bird> getBirdsCanLayEggs()
+    {
+    	ArrayList<Bird> birdsForrest = this.availableBirds(0);
+    	//check grasslands
+    	ArrayList<Bird> birdsGrass = this.availableBirds(1);
+    	//check wetlands
+    	ArrayList<Bird> birdsWet = this.availableBirds(2); 	
+    	//combine all birds into one list
+    	ArrayList<Bird> allBirds = new ArrayList<>();
+    	allBirds.addAll(birdsForrest);
+    	allBirds.addAll(birdsGrass);
+    	allBirds.addAll(birdsWet);
+    	return allBirds;
+    }
     //goes through specified habitat and returns an array of available birds to lay eggs on
     public ArrayList<Bird> availableBirds(int row) {
         int newEggs=1;

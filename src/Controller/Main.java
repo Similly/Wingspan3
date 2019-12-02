@@ -136,6 +136,7 @@ public class Main {
             player.setActionCubes(player.getActionCubes()-1);
         }
     }
+    // This AI is not good at the game at the moment.
     // A start to the AI
     // It will always play a bird if it can
     // if it has a bird but not enough food it will gain food until it can play it
@@ -171,28 +172,16 @@ public class Main {
     	   player.drawBird();
     	   return;
        }
-       //if the board is 100% full of birds check if we can lay eggs
        
-       //check forrest
-       ArrayList<Bird> birdsForrest = player.availableBirds(0);
-       //check grasslands
-       ArrayList<Bird> birdsGrass = player.availableBirds(1);
-       //check wetlands
-       ArrayList<Bird> birdsWet = player.availableBirds(2);
-       //combine all birds into one list
-       ArrayList<Bird> allBirds = new ArrayList<>();
-       
-       allBirds.addAll(birdsForrest);
-       allBirds.addAll(birdsGrass);
-       allBirds.addAll(birdsWet);
        // lay the eggs
        // TODO make it automatically pick a bird to lay eggs on
-       /*
+       ArrayList<Bird> allBirds = player.getBirdsCanLayEggs();
        if (!allBirds.isEmpty()){
     	   MainView.AIMoves(3);
-           player.layEggs();
+           int id = allBirds.get(0).getId();
+           player.addEggs(id);
        }
-        */
+        
     }
     // AI that randomly picks its moves
     public static void dumbAI(WingspanPlayer player) 
@@ -213,21 +202,24 @@ public class Main {
     	    	   return;
     		
     		case "2: gain food":
-    			 MainView.AIMoves(2);
+    			   MainView.AIMoves(2);
     	    	   player.gainFood();
     	    	   return;
     		case "3: lay eggs":
-    			 MainView.AIMoves(3);
-    	           //player.layEggs(); // TODO make it automatically pick a bird to lay eggs on
+    			
+    			   MainView.AIMoves(3);
+    			   ArrayList<Bird> allBirds = player.getBirdsCanLayEggs();
+    			   int id = allBirds.get(0).getId();
+    	           player.addEggs(id);
     	           return;
     		case "4: draw bird card":
-    			 MainView.AIMoves(4);
+    			   MainView.AIMoves(4);
     	    	   player.drawBird();
     	    	   return;
     		case "5: skip turn":
-    			MainView.AIMoves(5);
-    			turnSkipped = true;
-       		 break;
+    			   MainView.AIMoves(5);
+    			   turnSkipped = true;
+    			   return;
     		
     	}
     	return;
