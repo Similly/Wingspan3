@@ -29,22 +29,26 @@ public class Main {
 	
 	public static void main(String[] args){
 		
+		//sets up board/cards
 		initCards();
 		initBoard();
+		//displays welcome message 
 		MonopolyMainView.welcomeMessage();
+		//returns players 
     	amountOfPlayers = MonopolyMainView.getInt();
-    	
+    	//array of players
     	players = new MonopolyPlayer[amountOfPlayers];
-    	
+    	//initializes players 
         for (int i = 0 ; i < players.length ; i++) {
             players[i] = new MonopolyPlayer(i+1);
         }
 	
+        //displays monopoly board
 		board.display();
 		
 	}
 	
-	// adds the cards to board
+	// adds the cards to stack
     public static void initCards(){
 
         int id;
@@ -83,6 +87,7 @@ public class Main {
         }
     }
     
+    //initializes cards onto  board
     public static void initBoard() {
     	
     	board.placeCard(10, 10, monopolyCardStack.get(0));
@@ -125,11 +130,6 @@ public class Main {
     	board.placeCard(7, 10, monopolyCardStack.get(37));
     	board.placeCard(8, 10, monopolyCardStack.get(38));
     	board.placeCard(9, 10, monopolyCardStack.get(39));
-
-    	
-
-
-
 
 
 

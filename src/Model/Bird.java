@@ -5,6 +5,7 @@ import GameFramework.Card;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 /* A bird has 5 fields.
  * An Id, a name, a habitat, the required food to play it and the amount of eggs on the bird.
@@ -48,7 +49,7 @@ public class Bird extends Card {
         this.requiredFood = requiredFood;
     }*/
 
-
+    
     public int getEggsOnBird() {
         return eggsOnBird;
     }

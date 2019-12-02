@@ -3,6 +3,7 @@ package Test;
 //import org.junit.Before;
 import org.junit.Test;
 
+import GameFramework.Card;
 import Model.Bird;
 import Model.Board;
 import Model.FoodTypes;
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class BoardTest { 
 
@@ -111,6 +113,7 @@ public class BoardTest {
     
     	board.placeCard(0,0,bird);
     	
+    	    	
     	assertThat(board.searchBoard(2)).isEqualToComparingFieldByField(bird);
     }*/
 }
