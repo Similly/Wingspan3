@@ -262,6 +262,9 @@ public class WingspanPlayer extends Player {
     public int getActionCubes() { return actionCubes; }
 
     public void setActionCubes(int actionCubes) { this.actionCubes = actionCubes; }
+    
+    public int getNumBirds() {return birds.size();}
+    
  // for acceptance test.
     public void testAddBird(Bird b)
     {

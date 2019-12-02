@@ -77,44 +77,105 @@ public class Main {
     private static void turn(WingspanPlayer player) {
         player.setActionCubes(8);
         while (player.getActionCubes() > 0){
-            ArrayList<String> availableMoves = player.getAvailableMoves();
-            MainView.playerTurn(player.getId());
-            player.getBoard().display();
-            MainView.actionCubes(player.getActionCubes());
-            MainView.availableMoves(availableMoves);
-            int moveNumber;
-            moveNumber = MainView.getInt();
-
-            switch (moveNumber){
-                case 1:
-                    ArrayList<Bird> availableBirds = player.getAvailableBirds();
-                    PlayerView.printAvailableBirds(availableBirds);
-                    Bird bird = PlayerView.chooseBirdFromList(availableBirds);
-                    Habitats habitat = PlayerView.chooseHabitat(bird);
-                    player.playBird(bird, habitat);
-                    break;
-                case 2:
-                    PlayerView.printGainFood(player.gainFood());
-                    break;
-                case 3:
-                    int newEggs = player.layEggs();
-                    int totalEggCount = player.getEggCount();
-                    PlayerView.printLayEggs(newEggs, totalEggCount);
-                    break;
-                case 4:
-                    int newBirds = player.drawBird();
-                    PlayerView.printDrawBirds(newBirds);
-                    break;
-                case 5:
-                    player.setActionCubes(8);
-                    player.getBoard().display();
-                    return;
-            }
+        	if(player.getId() == 5)
+        	{
+        		AI(player);
+        	}
+        	else {
+	            ArrayList<String> availableMoves = player.getAvailableMoves();
+	            MainView.playerTurn(player.getId());
+	            player.getBoard().display();
+	            MainView.actionCubes(player.getActionCubes());
+	            MainView.availableMoves(availableMoves);
+	            int moveNumber;
+	            moveNumber = MainView.getInt();
+	
+	            switch (moveNumber){
+	                case 1:
+	                    ArrayList<Bird> availableBirds = player.getAvailableBirds();
+	                    PlayerView.printAvailableBirds(availableBirds);
+	                    Bird bird = PlayerView.chooseBirdFromList(availableBirds);
+	                    Habitats habitat = PlayerView.chooseHabitat(bird);
+	                    player.playBird(bird, habitat);
+	                    break;
+	                case 2:
+	                    PlayerView.printGainFood(player.gainFood());
+	                    break;
+	                case 3:
+	                    int newEggs = player.layEggs();
+	                    int totalEggCount = player.getEggCount();
+	                    PlayerView.printLayEggs(newEggs, totalEggCount);
+	                    break;
+	                case 4:
+	                    int newBirds = player.drawBird();
+	                    PlayerView.printDrawBirds(newBirds);
+	                    break;
+	                case 5:
+	                    player.setActionCubes(8);
+	                    player.getBoard().display();
+	                    return;
+	            }
+        	}
             player.getBoard().display();
             player.setActionCubes(player.getActionCubes()-1);
         }
     }
-
+    // A start to the AI
+    // It will always play a bird if it can
+    // if it has a bird but not enough food it will gain food until it can play it
+    // if the board is not full and its out of birds it will draw birds.
+    // if the board is full of birds it will then lay eggs.
+    private static void AI(WingspanPlayer player)
+    {
+    	ArrayList<String> availableMoves = player.getAvailableMoves();
+        MainView.playerTurn(player.getId());
+        player.getBoard().display();
+        MainView.actionCubes(player.getActionCubes());
+        MainView.availableMoves(availableMoves);
+        
+        ArrayList<Bird> availableBirds = player.getAvailableBirds();
+        // play birds if we can
+       if(availableBirds.size() >0)
+       {
+    	   Bird bird = availableBirds.get(0); // might want to change the way this works later
+    	   Habitats habitat  = bird.getHabitats().get(0);
+    	   player.playBird(bird, habitat);
+    	   return;
+       }
+       // we have birds but not enought food. gain food.
+       if(player.getNumBirds() > 0)
+       {
+    	   MainView.AIMoves(2);
+    	   player.gainFood();
+    	   return;
+       }// if there is room on the board for more birds, get more birds!
+       if(player.getNumBirds() == 0 && !player.getBoard().isFull())
+       {
+    	   MainView.AIMoves(4);
+    	   player.drawBird();
+    	   return;
+       }
+       //if the board is 100% full of birds check if we can lay eggs
+       
+       //check forrest
+       ArrayList<Bird> birdsForrest = player.availableBirds(0);
+       //check grasslands
+       ArrayList<Bird> birdsGrass = player.availableBirds(1);
+       //check wetlands
+       ArrayList<Bird> birdsWet = player.availableBirds(2);
+       //combine all birds into one list
+       ArrayList<Bird> allBirds = new ArrayList<>();
+       
+       allBirds.addAll(birdsForrest);
+       allBirds.addAll(birdsGrass);
+       allBirds.addAll(birdsWet);
+       // lay the eggs
+       if (!allBirds.isEmpty()){
+    	   MainView.AIMoves(3);
+           player.layEggs();
+       }
+        
+    }
     // initializes the game for the given amount of player
     private static void init(){
     	MainView.welcomeMessage();
@@ -127,12 +188,23 @@ public class Main {
     		System.out.println("Acceptance test over");
     		System.exit(0);
     	}
-        players = new WingspanPlayer[amountOfPlayers];
-
-        for (int i = 0 ; i < players.length ; i++) {
-            players[i] = new WingspanPlayer(i+1);
-        }
-
+    	// playing vs AI
+    	if(amountOfPlayers == 6)
+    	{
+    		players = new WingspanPlayer[2];
+    		players[0] = new WingspanPlayer(1);
+    		players[1] = new WingspanPlayer(5); // 5 for AI.
+    		// reset to real # of players
+    		amountOfPlayers = 2;
+    		
+    	}
+    	else { // playing solo or with other people
+	        players = new WingspanPlayer[amountOfPlayers];
+	
+	        for (int i = 0 ; i < players.length ; i++) {
+	            players[i] = new WingspanPlayer(i+1);
+	        }
+    	}
         dice = new Dice();
     }
     // adds the birds to the birdstack
