@@ -11,10 +11,11 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import Model.Bird;
-import Model.FoodTypes;
-import Model.Habitats;
+import Model.Dice;
+import Model.WingspanPlayer;
 import MonopolyModel.*;
+import MonopolyView.MonopolyMainView;
+
 
 public class Main {
 	
@@ -23,11 +24,22 @@ public class Main {
 	private static MonopolyBoard board = new MonopolyBoard("monopoly");
 	
 	private int width,height=11;
+	private static  int amountOfPlayers;
+	private static MonopolyPlayer[] players;
 	
 	public static void main(String[] args){
 		
 		initCards();
 		initBoard();
+		MonopolyMainView.welcomeMessage();
+    	amountOfPlayers = MonopolyMainView.getInt();
+    	
+    	players = new MonopolyPlayer[amountOfPlayers];
+    	
+        for (int i = 0 ; i < players.length ; i++) {
+            players[i] = new MonopolyPlayer(i+1);
+        }
+	
 		board.display();
 		
 	}

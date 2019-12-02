@@ -4,7 +4,7 @@ import GameFramework.Player;
 
 public class MonopolyPlayer extends Player{
 	
-	MonopolyPlayer(int id)
+	public MonopolyPlayer(int id)
 	{
 		super(id);
 	}
