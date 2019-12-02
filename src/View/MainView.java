@@ -10,7 +10,8 @@ public class MainView {
 	public static void welcomeMessage() 
 	{
 		System.out.println("+++ Welcome to Wingspan! +++\n" +
-                "Please enter amount of players(1-4) or press 5 for acceptance testing, 6 to play vs AI:");
+                "To play solo or with friends enter amount of players(1-4), to test"
+                + " press 5, press 6 to play vs AI, or press 7 to play vs easy AI:");
 	}	
 	// don't close scanner the program will throw a NoSuchElement Exception
 	@SuppressWarnings("resource")
@@ -65,6 +66,9 @@ public class MainView {
 				break;
 			case 4: 
 				System.out.println("The AI drew a bird card!");
+				break;
+			case 5:
+				System.out.println("The AI skipped its turn!");
 				break;
 		}
 	}
