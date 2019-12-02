@@ -190,4 +190,18 @@ public class Board extends BoardGeneric {
 			
 			return pos; 
 		}
+		//returns true if the board is full of birds
+		// "-" is the default name of the cards
+		public boolean isFull() 
+		{
+			for (int row = 0; row < height; row++){
+				for (int col = 0; col < width; col++){
+					if (board[row][col].getCardName()== "-"){
+						return false;
+					}
+				}
+			}
+			
+			return true; 
+		}
 }

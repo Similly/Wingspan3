@@ -22,7 +22,7 @@ public class Main {
     private static Dice dice;
     private static int turn, round;
     private static ArrayList<Bird> birdStack = new ArrayList<>();
-
+    
     public static void main(String[] args){
     	    	
 
@@ -77,44 +77,71 @@ public class Main {
     private static void turn(WingspanPlayer player) {
         player.setActionCubes(8);
         while (player.getActionCubes() > 0){
-            ArrayList<String> availableMoves = player.getAvailableMoves();
-            MainView.playerTurn(player.getId());
-            player.getBoard().display();
-            MainView.actionCubes(player.getActionCubes());
-            MainView.availableMoves(availableMoves);
-            int moveNumber;
-            moveNumber = MainView.getInt();
-
-            switch (moveNumber){
-                case 1:
-                    ArrayList<Bird> availableBirds = player.getAvailableBirds();
-                    PlayerView.printAvailableBirds(availableBirds);
-                    Bird bird = PlayerView.chooseBirdFromList(availableBirds);
-                    Habitats habitat = PlayerView.chooseHabitat(bird);
-                    player.playBird(bird, habitat);
-                    break;
-                case 2:
-                    PlayerView.printGainFood(player.gainFood());
-                    break;
-                case 3:
-                    int newEggs = player.layEggs();
-                    int totalEggCount = player.getEggCount();
-                    PlayerView.printLayEggs(newEggs, totalEggCount);
-                    break;
-                case 4:
-                    int newBirds = player.drawBird();
-                    PlayerView.printDrawBirds(newBirds);
-                    break;
-                case 5:
-                    player.setActionCubes(8);
-                    player.getBoard().display();
-                    return;
-            }
+        	if(player.getId() == 5)
+        	{
+        		smartAI((SmartAI)player);
+        	}
+        	else if (player.getId() == 6)
+        	{	
+        		dumbAI((DumbAI)player);
+        		
+        	}
+        	else {
+	            ArrayList<String> availableMoves = player.getAvailableMoves();
+	            MainView.playerTurn(player.getId());
+	            player.getBoard().display();
+	            MainView.actionCubes(player.getActionCubes());
+	            MainView.availableMoves(availableMoves);
+	            int moveNumber;
+	            moveNumber = MainView.getInt();
+	
+	            switch (moveNumber){
+	                case 1:
+	                    ArrayList<Bird> availableBirds = player.getAvailableBirds();
+	                    PlayerView.printAvailableBirds(availableBirds);
+	                    Bird bird = PlayerView.chooseBirdFromList(availableBirds);
+	                    Habitats habitat = PlayerView.chooseHabitat(bird);
+	                    player.playBird(bird, habitat);
+	                    break;
+	                case 2:
+	                    PlayerView.printGainFood(player.gainFood());
+	                    break;
+	                case 3:
+	                	
+	                    int newEggs = player.layEggs();
+	                    int totalEggCount = player.getEggCount();
+	                    PlayerView.printLayEggs(newEggs, totalEggCount);
+	                    break;
+	                case 4:
+	                    int newBirds = player.drawBird();
+	                    PlayerView.printDrawBirds(newBirds);
+	                    break;
+	                case 5:
+	                    player.setActionCubes(8);
+	                    player.getBoard().display();
+	                    return;
+	            }
+        	}
             player.getBoard().display();
             player.setActionCubes(player.getActionCubes()-1);
         }
     }
-
+    
+    private static void smartAI(SmartAI player)
+    {	
+    	MainView.playerTurn(player.getId());
+        player.getBoard().display();
+        MainView.actionCubes(player.getActionCubes());
+        player.playTurn();
+    }
+    // AI that randomly picks its moves
+    public static void dumbAI(DumbAI player) 
+    {
+    	MainView.playerTurn(player.getId());
+        player.getBoard().display();
+        MainView.actionCubes(player.getActionCubes());
+    	player.playTurn();
+    }
     // initializes the game for the given amount of player
     private static void init(){
     	MainView.welcomeMessage();
@@ -127,12 +154,32 @@ public class Main {
     		System.out.println("Acceptance test over");
     		System.exit(0);
     	}
-        players = new WingspanPlayer[amountOfPlayers];
-
-        for (int i = 0 ; i < players.length ; i++) {
-            players[i] = new WingspanPlayer(i+1);
-        }
-
+    	// playing vs SmartAI
+    	if(amountOfPlayers == 6)
+    	{
+    		players = new WingspanPlayer[2];
+    		players[0] = new WingspanPlayer(1);
+    		players[1] = new SmartAI(5); // 5 for AI.
+    		// reset to real # of players
+    		amountOfPlayers = 2;
+    		
+    	} // dumbAI
+    	else if(amountOfPlayers == 7)
+    	{
+    		players = new WingspanPlayer[2];
+    		players[0] = new WingspanPlayer(1);
+    		players[1] = new DumbAI(6); // 6 for easy AI.
+    		// reset to real # of players
+    		amountOfPlayers = 2;
+    		
+    	}
+    	else { // playing solo or with other people
+	        players = new WingspanPlayer[amountOfPlayers];
+	
+	        for (int i = 0 ; i < players.length ; i++) {
+	            players[i] = new WingspanPlayer(i+1);
+	        }
+    	}
         dice = new Dice();
     }
     // adds the birds to the birdstack

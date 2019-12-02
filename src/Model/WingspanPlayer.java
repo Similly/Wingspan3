@@ -10,12 +10,12 @@ import java.util.Map;
 
 public class WingspanPlayer extends Player {
 
-    private int eggCount;
-    private int actionCubes;
-    private ArrayList<Bird> birds;
-    private Board board;
-    private Dice dice;
-    private HashMap<FoodTypes, Integer> food;
+    protected int eggCount;
+    protected int actionCubes;
+    protected ArrayList<Bird> birds;
+    protected Board board;
+    protected Dice dice;
+    protected HashMap<FoodTypes, Integer> food;
 
     public WingspanPlayer(int id){
         super(id);
@@ -139,8 +139,22 @@ public class WingspanPlayer extends Player {
     	
     	return addEggs; 
     }
-    
-    
+   
+    // returns all birds that can lay eggs
+    public ArrayList<Bird> getBirdsCanLayEggs()
+    {
+    	ArrayList<Bird> birdsForrest = this.availableBirds(0);
+    	//check grasslands
+    	ArrayList<Bird> birdsGrass = this.availableBirds(1);
+    	//check wetlands
+    	ArrayList<Bird> birdsWet = this.availableBirds(2); 	
+    	//combine all birds into one list
+    	ArrayList<Bird> allBirds = new ArrayList<>();
+    	allBirds.addAll(birdsForrest);
+    	allBirds.addAll(birdsGrass);
+    	allBirds.addAll(birdsWet);
+    	return allBirds;
+    }
     //goes through specified habitat and returns an array of available birds to lay eggs on
     public ArrayList<Bird> availableBirds(int row) {
         int newEggs=1;
@@ -262,6 +276,9 @@ public class WingspanPlayer extends Player {
     public int getActionCubes() { return actionCubes; }
 
     public void setActionCubes(int actionCubes) { this.actionCubes = actionCubes; }
+    
+    public int getNumBirds() {return birds.size();}
+    
  // for acceptance test.
     public void testAddBird(Bird b)
     {
