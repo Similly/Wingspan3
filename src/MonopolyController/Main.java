@@ -39,6 +39,7 @@ public class Main {
         String name;
         int score;
         String color;
+        int player;
 
         JSONParser parser = new JSONParser();
 
@@ -53,11 +54,13 @@ public class Main {
                 name = (String) card.get("Name");
                 score = ((Long) card.get("Score")).intValue();
                 color = (String) card.get("Color");
+                player = ((Long) card.get("Player")).intValue();
+                
 
                
 
                 
-                monopolyCardStack.add(new MonopolyCard(id, name, score,color));
+                monopolyCardStack.add(new MonopolyCard(id, name, score,color,player));
             }
         } catch (ParseException e) {
             e.printStackTrace();
