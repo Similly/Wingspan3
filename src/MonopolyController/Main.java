@@ -32,7 +32,7 @@ public class Main {
 		
 	}
 	
-	// adds the cards
+	// adds the cards to board
     public static void initCards(){
 
         int id;
