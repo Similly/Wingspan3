@@ -1,11 +1,15 @@
 {
-  "classes": [
+  "wingspanClasses": [
       {"name": "BoardTest"},
       {"name": "DumbAITest"},
       {"name": "EggTest"},
       {"name": "FoodTokenTest"},
       {"name": "MainTest"},
-      {"name": "PlayerTest"},
-      {"name":  "MonopolyDiceTest"}
+      {"name": "PlayerTest"}
+  ],
+  "monopolyClasses": [
+    {"name": "MonopolyBoardTest"},
+    {"name": "MonopolyDiceTest"},
+    {"name": "MonopolyPlayerTest"}
   ]
 }

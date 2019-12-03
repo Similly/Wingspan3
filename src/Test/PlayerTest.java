@@ -39,7 +39,6 @@ public class PlayerTest {
         ArrayList<String> expected = new ArrayList<>();
         expected.add("1: place bird");
         expected.add("2: gain food");
-        expected.add("3: lay eggs");
         expected.add("4: draw bird card");
 
         assertEquals(expected, player.getAvailableMoves());

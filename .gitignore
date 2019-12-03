@@ -35,3 +35,13 @@
 /src/Model/DumbAI.class
 /src/Model/SmartAI.class
 /src/Model/WingspanPlayer.class
+/src/MonopolyController/Main.class
+/src/MonopolyModel/MonopolyBoard.class
+/src/MonopolyModel/MonopolyCard.class
+/src/MonopolyModel/MonopolyDice.class
+/src/MonopolyModel/MonopolyPlayer.class
+/src/MonopolyTest/MonopolyBoardTest.class
+/src/MonopolyTest/MonopolyDiceTest.class
+/src/MonopolyTest/MonopolyPlayerTest.class
+/src/MonopolyView/MonopolyBoardView.class
+/src/MonopolyView/MonopolyMainView.class
