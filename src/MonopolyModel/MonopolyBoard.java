@@ -15,6 +15,14 @@ public class MonopolyBoard extends BoardGeneric {
 	public MonopolyBoard() {
 		super();
 	}
+
+	public MonopolyBoard(boolean test){
+		super();
+
+		board = new MonopolyCard[2][2];
+		board[0][1] = new MonopolyCard();
+		board[0][1].setCardId(-1);
+	}
 	
 	public MonopolyBoard(String name)
 	{
@@ -70,7 +78,7 @@ public class MonopolyBoard extends BoardGeneric {
   	//output: true if not occupied
   	public boolean spacefree(int row, int col) {
   		
-  		if(board[row][col].getId()==0)
+  		if(board[row][col].getId()==-1)
     			return true;
     		return false;
   		
