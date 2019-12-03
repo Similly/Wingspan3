@@ -11,8 +11,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import Model.Dice;
-import Model.WingspanPlayer;
+
 import MonopolyModel.*;
 import MonopolyView.MonopolyMainView;
 
@@ -47,7 +46,12 @@ public class Main {
 	
         //creates dice obj
         dice=new Dice();
-        //displays monopoly board
+        //rolls dice (2 dice in monopoly?)
+		int roll=dice.getRoll();
+		System.out.println(roll);
+		roll=roll+dice.getRoll();
+		System.out.println(roll);
+		//displays monopoly board
 		board.display();
 		
 	}
