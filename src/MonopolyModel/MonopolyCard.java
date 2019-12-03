@@ -4,16 +4,18 @@ import GameFramework.Card;
 
 public class MonopolyCard extends Card {
 	private String color;
-	private int player;
+	private int cost;
+	private MonopolyPlayer player;
 	
 	public MonopolyCard() {
 		super();
 	}
 	
-	public MonopolyCard(int id,String name, int score, String c,int p) {
-		super(id,name,score);
-		this.color=c;
-		this.player=p;
+	public MonopolyCard(int id, String name, int score, String c, MonopolyPlayer p) {
+		super(id, name, score);
+		this.color = c;
+		this.player = p;
+		this.cost = 500;
 	}
 
 	public int getCardId() {
@@ -39,19 +41,25 @@ public class MonopolyCard extends Card {
     public void setCardScore(int score) { 
     	setScore(score); 
     }
-    public int getCardPlayer() {
+    public MonopolyPlayer getCardPlayer() {
         return player;
     }
 
-    public void setCardPlayer(int p) {
+    public void setCardPlayer(MonopolyPlayer p) {
         this.player=p;
     }
 
-    public String getCardColor() {
-        return color;
-    }
+    public String getCardColor() { return color; }
 
     public void setCardColor(String c) {
         this.color=c;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
     }
 }

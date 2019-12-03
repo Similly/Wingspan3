@@ -2,11 +2,11 @@ package GameFramework;
 
 
 public class GenericDice {
-	protected int roll;
-	protected int numSides; // default size is 6
-	protected boolean isScripted; 
-	protected int[] scriptedRolls;
-	protected int index; // holds current position in scriptedRolls array
+	private int roll;
+	private int numSides; // default size is 6
+	private boolean isScripted;
+	private int[] scriptedRolls;
+	private int index; // holds current position in scriptedRolls array
 	public GenericDice() 
 	{
 		

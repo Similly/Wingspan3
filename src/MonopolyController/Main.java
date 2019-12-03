@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import GameFramework.Card;
+import GameFramework.Player;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -24,9 +26,9 @@ public class Main {
 	private static MonopolyBoard board = new MonopolyBoard("monopoly");
 	
 	private int width,height=11;
-	private static  int amountOfPlayers;
+	private static int amountOfPlayers;
 	private static MonopolyPlayer[] players;
-    private static Dice dice;
+    private static MonopolyDice dice;
 
 	
 	public static void main(String[] args){
@@ -46,10 +48,65 @@ public class Main {
         }
 	
         //creates dice obj
-        dice=new Dice();
+        dice = new MonopolyDice();
+        dice.setNumSides(7);
         //displays monopoly board
 		board.display();
-		
+
+		for (int i = 0; i < amountOfPlayers; i++){
+			turn(players[i]);
+			board.display();
+		}
+
+		getWinner();
+	}
+
+	private static void getWinner() {
+		int highscore = 0;
+		MonopolyPlayer winner = players[0];
+		for (int i = 0; i < players.length; i++){
+			int score = 0;
+			for (int j = 0; j < players[i].getCards().size(); j++){
+				score += players[i].getCards().get(j).getCardScore();
+			}
+
+			if (score > highscore){
+				highscore = score;
+				winner = players[i];
+			}
+		}
+
+		MonopolyMainView.printWinner(winner, highscore);
+	}
+
+	// the turn function gets called for every player when it is his turn
+	public static void turn(MonopolyPlayer player){
+
+		MonopolyCard card;
+		int cardCost;
+
+		MonopolyMainView.playerTurn(player.getId());
+		MonopolyMainView.pleaseRollDice();
+		MonopolyMainView.getInt();
+
+		int numSteps = dice.roll();
+		MonopolyMainView.printNumSteps(numSteps);
+
+		card = board.getCard(0, numSteps);
+		cardCost = card.getCost();
+
+		MonopolyMainView.printCard(card.getCardName(), cardCost, card.getCardScore());
+		int decision = MonopolyMainView.getInt();
+
+		if(decision == 1){
+			player.setMoney(player.getMoney() - cardCost);
+			player.addCard(card);
+			board.getCard(0, numSteps).setCardPlayer(player);
+			MonopolyMainView.printPropertyBought();
+		} else {
+			MonopolyMainView.printPropertyNotBought();
+		}
+
 	}
 	
 	// adds the cards to stack
@@ -59,7 +116,7 @@ public class Main {
         String name;
         int score;
         String color;
-        int player;
+        MonopolyPlayer player;
 
         JSONParser parser = new JSONParser();
 
@@ -74,7 +131,7 @@ public class Main {
                 name = (String) card.get("Name");
                 score = ((Long) card.get("Score")).intValue();
                 color = (String) card.get("Color");
-                player = ((Long) card.get("Player")).intValue();
+                player = new MonopolyPlayer(-1);
                 
 
                
@@ -134,11 +191,5 @@ public class Main {
     	board.placeCard(7, 10, monopolyCardStack.get(37));
     	board.placeCard(8, 10, monopolyCardStack.get(38));
     	board.placeCard(9, 10, monopolyCardStack.get(39));
-
-
-
-
-    	
     }
-
 }

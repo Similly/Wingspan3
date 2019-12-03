@@ -9,8 +9,8 @@ import GameFramework.Card;
 public class MonopolyBoard extends BoardGeneric {
 	private int width=11; 
 	private int height =11; 
-	private Card[][] board;
-	private Card card=new Card();
+	private MonopolyCard[][] board;
+	private MonopolyCard card = new MonopolyCard();
 	
 	public MonopolyBoard() {
 		super();
@@ -19,7 +19,7 @@ public class MonopolyBoard extends BoardGeneric {
 	public MonopolyBoard(String name)
 	{
 		super(getWidth(),getHeight(),name);
-		board = new Card[height][width];
+		board = new MonopolyCard[height][width];
 		//initialize board
 		for(int row=0;row<height;row++)
 		{
@@ -60,7 +60,7 @@ public class MonopolyBoard extends BoardGeneric {
     }
     
   //place a card on the board in specified row and col 
-  	public void placeCard(int row, int col, Card c)
+  	public void placeCard(int row, int col, MonopolyCard c)
   	{
   		
   		board[row][col]=c;
@@ -78,10 +78,13 @@ public class MonopolyBoard extends BoardGeneric {
   	}
   	
   //returns the current board 
-  		public Card[][] getBoard()
+  		public MonopolyCard[][] getBoard()
   		{
   			return board;
   		}
 
 
+	public MonopolyCard getCard(int row, int col) {
+		return board[row][col];
+	}
 }
