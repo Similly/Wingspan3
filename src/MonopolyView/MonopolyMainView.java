@@ -27,7 +27,7 @@ public class MonopolyMainView {
 
 	// demands the player to roll the dice
 	public static void pleaseRollDice(){
-		System.out.println("Please enter any character to roll the dice!");
+		System.out.println("Please enter any integer to roll the dice!");
 	}
 
 	// prints the number of steps a player can move forward
