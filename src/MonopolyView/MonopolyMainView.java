@@ -37,6 +37,7 @@ public class MonopolyMainView {
 
 	public static void printCard(String cardName, int cardCost, int score) {
 		System.out.println("Do you want to buy the following field?\nName: " + cardName + "\nCost: " + cardCost + "\nScore: " + score);
+		System.out.println("Enter 1 for yes and 0 for no");
 	}
 
 	public static void printPropertyBought() {
