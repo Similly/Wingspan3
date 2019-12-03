@@ -1,10 +1,11 @@
 {
   "classes": [
       {"name": "BoardTest"},
-      {"name": "DiceTest"},
+      {"name": "DumbAITest"},
       {"name": "EggTest"},
       {"name": "FoodTokenTest"},
       {"name": "MainTest"},
-      {"name": "PlayerTest"}
+      {"name": "PlayerTest"},
+      {"name":  "MonopolyDiceTest"}
   ]
 }

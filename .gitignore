@@ -22,3 +22,16 @@
 /src/Model/Habitats.class
 /src/Controller/Main.class
 /Wingspan3.iml
+/src/Test/DumbAITest.class
+/src/Test/MonopolyDiceTest.class
+/src/View/BoardView.class
+/src/View/MainView.class
+/src/View/PlayerView.class
+/src/Controller/AcceptanceTestMain.class
+/src/GameFramework/BoardGeneric.class
+/src/GameFramework/Card.class
+/src/GameFramework/GenericDice.class
+/src/GameFramework/Player.class
+/src/Model/DumbAI.class
+/src/Model/SmartAI.class
+/src/Model/WingspanPlayer.class
